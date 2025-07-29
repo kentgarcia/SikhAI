@@ -1,11 +1,10 @@
 import type { Metadata } from 'next';
-import { AppLayout } from '@/components/layout';
 import { Toaster } from "@/components/ui/toaster";
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Rosa Ciudad',
-  description: 'Your friendly city companion app for Santa Rosa.',
+  title: 'New App',
+  description: 'A new app built in Firebase Studio',
 };
 
 export default function RootLayout({
@@ -15,17 +14,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
-      </head>
-      <body className="font-body antialiased">
-        <div className="flex justify-center bg-gray-200">
-          <div className="w-full max-w-sm bg-background shadow-lg relative h-[100dvh]">
-            <AppLayout>{children}</AppLayout>
-          </div>
-        </div>
+      <body>
+        {children}
         <Toaster />
       </body>
     </html>
