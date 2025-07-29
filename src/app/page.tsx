@@ -106,7 +106,7 @@ export default function Page() {
     setIsLoggingIn(true);
     setTimeout(() => {
         router.push('/onboarding');
-    }, 2000); // Simulate login process
+    }, 1000); // Simulate login process
   };
 
   return (
