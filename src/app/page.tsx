@@ -31,13 +31,13 @@ const LoginPage = () => {
         </div>
 
         <div className="w-full grid grid-cols-2 gap-4">
-            <Button variant="outline" className="w-full justify-center h-24 flex-col space-y-2">
+            <Button variant="outline" className="w-full justify-center h-24 flex-col space-y-2 text-foreground">
                 <Fingerprint className="h-6 w-6" />
-                <span>Biometric</span>
+                <span>Biometric Login</span>
             </Button>
-            <Button className="w-full bg-primary hover:bg-primary/90 h-24 flex-col space-y-2">
+            <Button variant="outline" className="w-full justify-center h-24 flex-col space-y-2 text-foreground">
                 <Shield className="h-6 w-6" />
-                <span>MPIN</span>
+                <span>MPIN Login</span>
             </Button>
         </div>
         
