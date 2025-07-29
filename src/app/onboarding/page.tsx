@@ -94,10 +94,6 @@ export default function OnboardingPage() {
       </div>
 
       <div className="flex flex-col space-y-4">
-        <Button onClick={handleNext} size="lg">
-          {currentStep === onboardingSteps.length - 1 ? "Get Started" : "Next"}
-          <ArrowRight className="ml-2" />
-        </Button>
         <div className="flex justify-between items-center">
             {currentStep > 0 ? (
                 <Button variant="ghost" onClick={handleBack} className="text-muted-foreground">
@@ -110,6 +106,10 @@ export default function OnboardingPage() {
                 Skip
             </Button>
         </div>
+        <Button onClick={handleNext} size="lg">
+          {currentStep === onboardingSteps.length - 1 ? "Get Started" : "Next"}
+          <ArrowRight className="ml-2" />
+        </Button>
       </div>
     </div>
   );
