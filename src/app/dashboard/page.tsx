@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
-import { Bell, Home, Newspaper, Sparkles, User, Briefcase, Calendar, Heart, Shield, GraduationCap, Building, ArrowRight, MapPin, CloudSun, Car } from "lucide-react";
+import { Bell, Home, Newspaper, Sparkles, User, Briefcase, Calendar, Heart, Shield, GraduationCap, Building, ArrowRight, MapPin, CloudSun, Car, Languages } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Image from 'next/image';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
@@ -47,9 +47,14 @@ export default function DashboardPage() {
                 <h2 className="text-lg font-bold">Juan Dela Cruz</h2>
             </div>
         </div>
-        <Button variant="ghost" size="icon">
-          <Bell className="h-6 w-6" />
-        </Button>
+        <div className="flex items-center gap-2">
+            <Button variant="ghost" size="icon">
+              <Languages className="h-6 w-6" />
+            </Button>
+            <Button variant="ghost" size="icon">
+              <Bell className="h-6 w-6" />
+            </Button>
+        </div>
       </header>
       
       <main className="flex-grow p-4 overflow-y-auto space-y-8 no-scrollbar">
