@@ -6,7 +6,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 
-export default function HomePage() {
+export default function DashboardPage() {
   const router = useRouter();
 
   return (
@@ -19,11 +19,11 @@ export default function HomePage() {
       <div className="flex-grow flex flex-col items-center justify-center space-y-8">
         <Card>
             <CardHeader>
-                <CardTitle>Home</CardTitle>
+                <CardTitle>Dashboard</CardTitle>
                 <CardDescription>Welcome to your dashboard!</CardDescription>
             </CardHeader>
             <CardContent>
-                <p>This is the home page. You can add your main app content here.</p>
+                <p>This is the dashboard page. You can add your main app content here.</p>
             </CardContent>
             <CardFooter>
                 <Button onClick={() => router.push('/')}>Log Out</Button>

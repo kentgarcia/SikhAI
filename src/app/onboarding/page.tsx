@@ -40,7 +40,7 @@ export default function OnboardingPage() {
     if (currentStep < onboardingSteps.length - 1) {
       setCurrentStep(currentStep + 1);
     } else {
-      router.push('/home');
+      router.push('/dashboard');
     }
   };
 
@@ -51,7 +51,7 @@ export default function OnboardingPage() {
   };
 
   const handleSkip = () => {
-    router.push('/home');
+    router.push('/dashboard');
   };
   
   const { icon: Icon, title, description, image, imageHint } = onboardingSteps[currentStep];
