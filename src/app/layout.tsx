@@ -22,7 +22,7 @@ export default function RootLayout({
       </head>
       <body className="font-body antialiased">
         <div className="flex justify-center bg-gray-200">
-          <div className="w-full max-w-sm bg-background shadow-lg relative">
+          <div className="w-full max-w-sm bg-background shadow-lg relative h-[100dvh]">
             <AppLayout>{children}</AppLayout>
           </div>
         </div>
