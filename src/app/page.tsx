@@ -2,8 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Shield, Fingerprint, Phone, Building2 } from "lucide-react";
+import { Shield, Fingerprint, Phone, Building2, ArrowRightLeft } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const LoginPage = () => {
@@ -23,13 +22,11 @@ const LoginPage = () => {
         </div>
 
         <div className="w-full flex flex-col items-center space-y-4">
-            <Avatar className="h-20 w-20">
-                <AvatarImage src="https://placehold.co/100x100.png" alt="User" data-ai-hint="profile picture" />
-                <AvatarFallback>JD</AvatarFallback>
-            </Avatar>
-            <div className="text-center">
-                <p className="font-semibold">Juan Dela Cruz</p>
-                <a href="#" className="text-sm text-primary hover:underline">Switch User</a>
+            <div className="inline-flex items-center justify-between w-full max-w-xs p-2 pl-4 rounded-full bg-muted">
+                <span className="font-semibold">Juan Dela Cruz</span>
+                <Button variant="ghost" size="icon" className="rounded-full">
+                    <ArrowRightLeft className="h-5 w-5" />
+                </Button>
             </div>
         </div>
 
@@ -43,11 +40,20 @@ const LoginPage = () => {
                 Login with MPIN
             </Button>
         </div>
+        
+        <div className="text-center">
+            <p className="text-sm text-muted-foreground">
+                Don't have an account?{" "}
+                <a href="#" className="text-primary font-semibold hover:underline">
+                    Sign Up
+                </a>
+            </p>
+        </div>
       </div>
 
-      <div className="pb-4">
-        <Button variant="destructive" className="w-full">
-            <Phone className="mr-2 h-5 w-5" />
+      <div className="pb-4 text-center">
+        <Button variant="link" className="text-muted-foreground">
+            <Phone className="mr-2 h-4 w-4" />
             Emergency Hotline
         </Button>
       </div>
