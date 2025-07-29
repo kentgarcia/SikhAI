@@ -30,15 +30,16 @@ const LoginPage = () => {
             </div>
         </div>
 
-        <div className="w-full grid grid-cols-2 gap-4">
-            <Button variant="outline" className="w-full justify-center h-24 flex-col space-y-2 text-foreground">
-                <Fingerprint className="h-6 w-6" />
-                <span>Biometric Login</span>
-            </Button>
-            <Button variant="outline" className="w-full justify-center h-24 flex-col space-y-2 text-foreground">
-                <Shield className="h-6 w-6" />
-                <span>MPIN Login</span>
-            </Button>
+        <div className="w-full max-w-xs h-24 bg-primary text-primary-foreground rounded-lg flex items-center">
+          <Button variant="ghost" className="w-1/2 h-full flex-col space-y-2 text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground rounded-r-none">
+            <Fingerprint className="h-6 w-6" />
+            <span>Biometric Login</span>
+          </Button>
+          <div className="w-px h-16 bg-primary-foreground/20"></div>
+          <Button variant="ghost" className="w-1/2 h-full flex-col space-y-2 text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground rounded-l-none">
+            <Shield className="h-6 w-6" />
+            <span>MPIN Login</span>
+          </Button>
         </div>
         
         <div className="text-center">
