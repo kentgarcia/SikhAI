@@ -75,15 +75,19 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
           </SidebarMenu>
         </SidebarContent>
       </Sidebar>
-      <SidebarInset>
-        <header className="flex h-14 items-center justify-between border-b bg-background/80 px-4 backdrop-blur-sm md:px-6">
-            <SidebarTrigger className="md:hidden" />
-            <div className="flex-1">
-                <h1 className="text-lg font-semibold text-foreground">{navItems.find(item => item.href === pathname)?.label || 'Rosa Ciudad'}</h1>
-            </div>
-        </header>
-        <main className="flex-1 overflow-auto p-4 md:p-6">{children}</main>
-      </SidebarInset>
+      <div className="flex flex-1 justify-center bg-gray-200">
+        <div className="w-full max-w-sm bg-background shadow-lg">
+          <SidebarInset>
+            <header className="flex h-14 items-center justify-between border-b bg-background/80 px-4 backdrop-blur-sm md:px-6">
+                <SidebarTrigger className="md:hidden" />
+                <div className="flex-1">
+                    <h1 className="text-lg font-semibold text-foreground">{navItems.find(item => item.href === pathname)?.label || 'Rosa Ciudad'}</h1>
+                </div>
+            </header>
+            <main className="flex-1 overflow-auto p-4 md:p-6">{children}</main>
+          </SidebarInset>
+        </div>
+      </div>
     </SidebarProvider>
   );
 }
