@@ -1,15 +1,18 @@
+
 "use client";
 
 import { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
-import { Shield, Fingerprint, Phone, Building2, ArrowRightLeft } from "lucide-react";
+import { Shield, Fingerprint, Phone, Building2, ArrowRightLeft, LoaderCircle } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useRouter } from 'next/navigation';
 
-const LoginPage = () => {
+const LoginPage = ({ onLogin }: { onLogin: () => void }) => {
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.9 }}
       animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.9 }}
       transition={{ duration: 0.5 }}
       className="flex flex-col h-full bg-background p-8"
     >
@@ -31,12 +34,12 @@ const LoginPage = () => {
         </div>
 
         <div className="w-full max-w-xs h-24 bg-primary text-primary-foreground rounded-lg flex items-center">
-          <Button variant="ghost" className="w-1/2 h-full flex-col space-y-2 text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground rounded-r-none">
+          <Button onClick={onLogin} variant="ghost" className="w-1/2 h-full flex-col space-y-2 text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground rounded-r-none">
             <Fingerprint className="h-6 w-6" />
             <span>Biometric Login</span>
           </Button>
           <div className="w-px h-16 bg-primary-foreground/20"></div>
-          <Button variant="ghost" className="w-1/2 h-full flex-col space-y-2 text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground rounded-l-none">
+          <Button onClick={onLogin} variant="ghost" className="w-1/2 h-full flex-col space-y-2 text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground rounded-l-none">
             <Shield className="h-6 w-6" />
             <span>MPIN Login</span>
           </Button>
@@ -73,8 +76,23 @@ const SplashScreen = () => (
   </motion.div>
 );
 
+const LoggingInScreen = () => (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.9 }}
+      transition={{ duration: 0.5 }}
+      className="flex h-full w-full flex-col items-center justify-center bg-background space-y-4"
+    >
+      <LoaderCircle className="text-primary h-16 w-16 animate-spin" />
+      <p className="text-muted-foreground">Logging in...</p>
+    </motion.div>
+  );
+
 export default function Page() {
   const [showSplash, setShowSplash] = useState(true);
+  const [isLoggingIn, setIsLoggingIn] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -84,9 +102,22 @@ export default function Page() {
     return () => clearTimeout(timer);
   }, []);
 
+  const handleLogin = () => {
+    setIsLoggingIn(true);
+    setTimeout(() => {
+        router.push('/onboarding');
+    }, 2000); // Simulate login process
+  };
+
   return (
     <AnimatePresence mode="wait">
-      {showSplash ? <SplashScreen key="splash" /> : <LoginPage key="login" />}
+      {showSplash ? (
+        <SplashScreen key="splash" />
+      ) : isLoggingIn ? (
+        <LoggingInScreen key="loggingIn" />
+      ) : (
+        <LoginPage key="login" onLogin={handleLogin} />
+      )}
     </AnimatePresence>
   );
 }
