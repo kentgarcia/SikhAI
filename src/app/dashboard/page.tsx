@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
-import { Bell, Home, Newspaper, Sparkles, User, Briefcase, Calendar, Heart, Shield, GraduationCap, Building, ArrowRight, MapPin } from "lucide-react";
+import { Bell, Home, Newspaper, Sparkles, User, Briefcase, Calendar, Heart, Shield, GraduationCap, Building, ArrowRight, MapPin, CloudSun, Car } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Image from 'next/image';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
@@ -52,7 +52,7 @@ export default function DashboardPage() {
         </Button>
       </header>
       
-      <main className="flex-grow p-4 overflow-y-auto space-y-8">
+      <main className="flex-grow p-4 overflow-y-auto space-y-8 no-scrollbar">
         {/* Custom Banner */}
         <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -156,6 +156,34 @@ export default function DashboardPage() {
                     ))}
                 </CarouselContent>
             </Carousel>
+        </div>
+
+        {/* Weather and Traffic */}
+        <div className="grid grid-cols-2 gap-4">
+            <div>
+                <h3 className="text-lg font-bold mb-4">Weather</h3>
+                <Card>
+                    <CardContent className="pt-6 flex items-center gap-4">
+                        <CloudSun className="w-10 h-10 text-primary" />
+                        <div>
+                            <p className="text-2xl font-bold">32°C</p>
+                            <p className="text-sm text-muted-foreground">Santa Rosa, Laguna</p>
+                        </div>
+                    </CardContent>
+                </Card>
+            </div>
+            <div>
+                <h3 className="text-lg font-bold mb-4">Traffic</h3>
+                <Card>
+                    <CardContent className="pt-6 flex items-center gap-4">
+                        <Car className="w-10 h-10 text-primary" />
+                        <div>
+                            <p className="text-lg font-bold">Light</p>
+                            <p className="text-sm text-muted-foreground">As of 5:00 PM</p>
+                        </div>
+                    </CardContent>
+                </Card>
+            </div>
         </div>
       </main>
 

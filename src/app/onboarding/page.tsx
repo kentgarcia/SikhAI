@@ -58,29 +58,31 @@ export default function OnboardingPage() {
 
   return (
     <div className="flex flex-col h-full bg-background p-6">
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={currentStep}
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: -50 }}
-          transition={{ duration: 0.3 }}
-          className="flex-grow flex flex-col items-center justify-center text-center space-y-4"
-        >
-            <Icon className="w-12 h-12 text-primary mb-4" />
-            <h1 className="text-2xl font-bold">{title}</h1>
-            <p className="text-muted-foreground px-4">{description}</p>
-            <div className="relative w-full max-w-xs aspect-video mt-4">
-              <Image
-                src={image}
-                alt={title}
-                fill
-                className="rounded-lg object-cover"
-                data-ai-hint={imageHint}
-              />
-            </div>
-        </motion.div>
-      </AnimatePresence>
+      <div className="flex-grow flex flex-col items-center justify-center text-center space-y-4 overflow-y-auto no-scrollbar">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentStep}
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -50 }}
+            transition={{ duration: 0.3 }}
+            className="flex-grow flex flex-col items-center justify-center text-center space-y-4"
+          >
+              <Icon className="w-12 h-12 text-primary mb-4" />
+              <h1 className="text-2xl font-bold">{title}</h1>
+              <p className="text-muted-foreground px-4">{description}</p>
+              <div className="relative w-full max-w-xs aspect-video mt-4">
+                <Image
+                  src={image}
+                  alt={title}
+                  fill
+                  className="rounded-lg object-cover"
+                  data-ai-hint={imageHint}
+                />
+              </div>
+          </motion.div>
+        </AnimatePresence>
+      </div>
       
       <div className="flex items-center justify-center space-x-2 my-6">
         {onboardingSteps.map((_, index) => (
