@@ -60,8 +60,32 @@ export default function DashboardPage() {
             transition={{ duration: 0.5 }}
             className="relative bg-rose-50 rounded-xl p-6 overflow-hidden flex items-center"
         >
-            <div className="absolute -top-1/4 -left-1/4 w-1/2 h-1/2 bg-rose-200/50 rounded-full filter blur-3xl opacity-50"></div>
-            <div className="absolute -bottom-1/4 -right-1/4 w-1/2 h-1/2 bg-rose-200/50 rounded-full filter blur-3xl opacity-50"></div>
+            <motion.div 
+                animate={{
+                    x: [-20, 20, -20],
+                    y: [-20, 20, -20],
+                }}
+                transition={{
+                    duration: 10,
+                    ease: "easeInOut",
+                    repeat: Infinity,
+                    repeatType: "reverse",
+                }}
+                className="absolute -top-1/4 -left-1/4 w-1/2 h-1/2 bg-rose-200/50 rounded-full filter blur-3xl opacity-50"
+            ></motion.div>
+             <motion.div 
+                animate={{
+                    x: [20, -20, 20],
+                    y: [20, -20, 20],
+                }}
+                transition={{
+                    duration: 12,
+                    ease: "easeInOut",
+                    repeat: Infinity,
+                    repeatType: "reverse",
+                }}
+                className="absolute -bottom-1/4 -right-1/4 w-1/2 h-1/2 bg-rose-200/50 rounded-full filter blur-3xl opacity-50"
+            ></motion.div>
             <div className="relative z-10 w-2/3">
                 <h3 className="text-xl font-bold text-gray-800">Meet Rosa, your AI companion!</h3>
                 <p className="text-sm text-gray-600 mt-2">Ask anything about Santa Rosa and get instant answers.</p>
@@ -165,5 +189,4 @@ export default function DashboardPage() {
       </nav>
     </div>
   );
-
-    
+}
