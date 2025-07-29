@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
-import { Bell, CreditCard, LayoutGrid, Settings, User } from "lucide-react";
+import { Bell, Home, Newspaper, Sparkles, User, Briefcase } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export default function DashboardPage() {
@@ -51,23 +51,31 @@ export default function DashboardPage() {
         </motion.div>
       </main>
 
-      <nav className="border-t bg-background">
-        <div className="mx-auto max-w-sm flex justify-around p-2">
-            <Button variant="ghost" className="flex flex-col h-auto items-center text-primary">
-                <LayoutGrid className="h-6 w-6" />
-                <span className="text-xs mt-1">Home</span>
-            </Button>
-            <Button variant="ghost" className="flex flex-col h-auto items-center text-muted-foreground">
-                <CreditCard className="h-6 w-6" />
-                <span className="text-xs mt-1">Cards</span>
-            </Button>
-            <Button variant="ghost" className="flex flex-col h-auto items-center text-muted-foreground">
-                <User className="h-6 w-6" />
-                <span className="text-xs mt-1">Profile</span>
-            </Button>
-            <Button variant="ghost" className="flex flex-col h-auto items-center text-muted-foreground">
-                <Settings className="h-6 w-6" />
-                <span className="text-xs mt-1">Settings</span>
+      <nav className="relative border-t bg-background">
+        <div className="mx-auto max-w-sm flex justify-around items-center h-16">
+          <Button variant="ghost" className="flex flex-col h-auto items-center text-primary">
+            <Home className="h-6 w-6" />
+            <span className="text-xs mt-1">Home</span>
+          </Button>
+          <Button variant="ghost" className="flex flex-col h-auto items-center text-muted-foreground">
+            <Newspaper className="h-6 w-6" />
+            <span className="text-xs mt-1">News</span>
+          </Button>
+          
+          <div className="w-16"></div>
+
+          <Button variant="ghost" className="flex flex-col h-auto items-center text-muted-foreground">
+            <Briefcase className="h-6 w-6" />
+            <span className="text-xs mt-1">Services</span>
+          </Button>
+          <Button variant="ghost" className="flex flex-col h-auto items-center text-muted-foreground">
+            <User className="h-6 w-6" />
+            <span className="text-xs mt-1">Account</span>
+          </Button>
+        </div>
+        <div className="absolute -top-8 left-1/2 -translate-x-1/2">
+            <Button size="icon" className="bg-primary hover:bg-primary/90 rounded-full w-16 h-16 shadow-lg">
+                <Sparkles className="h-8 w-8 text-primary-foreground" />
             </Button>
         </div>
       </nav>
