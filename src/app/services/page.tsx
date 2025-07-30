@@ -61,18 +61,18 @@ export default function ServicesPage() {
       <main className="flex-grow p-4 overflow-y-auto space-y-6 no-scrollbar flex flex-col">
         <h2 className="text-lg font-semibold text-center mb-2">How can we help you today?</h2>
 
-        <div className="flex-grow grid grid-cols-2 gap-4">
+        <div className="flex-grow grid grid-cols-1 gap-4">
             {services.map((service, index) => {
                 const Icon = service.icon;
                 return (
                     <Card key={index} className="overflow-hidden" onClick={() => {}}>
-                        <CardContent className="p-4 flex items-center gap-4">
+                        <CardContent className="p-3 flex items-center gap-3">
                             <div className={`p-3 rounded-lg flex items-center justify-center text-white ${service.color}`}>
-                                <Icon className="w-8 h-8" />
+                                <Icon className="w-7 h-7" />
                             </div>
                             <div className="flex-1">
-                                <h3 className="font-semibold text-sm mb-1">{service.title}</h3>
-                                <p className="text-xs text-muted-foreground">{service.description}</p>
+                                <h3 className="font-semibold text-xs mb-1">{service.title}</h3>
+                                <p className="text-[10px] text-muted-foreground leading-tight">{service.description}</p>
                             </div>
                         </CardContent>
                     </Card>
