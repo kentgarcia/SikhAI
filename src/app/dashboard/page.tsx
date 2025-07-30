@@ -208,7 +208,7 @@ export default function DashboardPage() {
           <Button variant="ghost" className="flex flex-col h-auto items-center text-muted-foreground">
             <Briefcase className="h-6 w-6" />
             <span className="text-xs mt-1">Services</span>
-          Button>
+          </Button>
           <Button variant="ghost" className="flex flex-col h-auto items-center text-muted-foreground">
             <User className="h-6 w-6" />
             <span className="text-xs mt-1">Account</span>
