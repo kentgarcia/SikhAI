@@ -46,14 +46,8 @@ export default function DashboardPage() {
     <div className="flex flex-col h-full bg-background">
       <header className="flex items-center justify-between p-4">
         <div className="flex items-center gap-3">
-            <Avatar>
-                <AvatarImage src="https://placehold.co/40x40.png" alt="Juan Dela Cruz" data-ai-hint="person portrait" />
-                <AvatarFallback>JD</AvatarFallback>
-            </Avatar>
-            <div>
-                <p className="text-sm text-muted-foreground">Welcome back,</p>
-                <h2 className="text-lg font-semibold">Juan Dela Cruz</h2>
-            </div>
+            <Image src="/images/icon_logo.png" alt="Logo" width={32} height={32} />
+            <h1 className="text-xl font-semibold">Dashboard</h1>
         </div>
         <div className="flex items-center gap-2">
             <Button variant="ghost" size="icon">
