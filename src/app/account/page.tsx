@@ -17,9 +17,9 @@ const menuItems = [
 
 export default function AccountPage() {
     return (
-        <div className="flex flex-col h-full bg-muted/20">
-            <main className="flex-1 flex flex-col overflow-hidden">
-                <div className="relative bg-gradient-to-b from-white to-[#FDE7E7] pt-8 pb-12 text-center">
+<div className="flex flex-col h-full bg-gradient-to-b from-white via-[#FDE7E7] to-[#A4040A]">            
+    <main className="flex-1 flex flex-col overflow-hidden">
+                <div className="relative pt-8 pb-12 text-center">
                     <Avatar className="h-24 w-24 mx-auto mb-4 text-4xl font-semibold" style={{backgroundColor: '#F9E9EF'}}>
                         <AvatarFallback className="bg-transparent text-primary">J</AvatarFallback>
                     </Avatar>
@@ -27,8 +27,7 @@ export default function AccountPage() {
                     <p className="text-sm text-muted-foreground">juan.delacruz@example.com</p>
                 </div>
                 
-                <div className="flex-1 p-4 space-y-3 -mt-8 overflow-y-auto no-scrollbar">
-                    <h3 className="text-lg font-semibold px-2">Account Settings</h3>
+                <div className="bg-white rounded-t-3xl flex-1 p-4 space-y-3 overflow-y-auto no-scrollbar shadow-md">                    <h3 className="text-lg font-semibold px-2">Account Settings</h3>
                     <Card className="p-2 rounded-2xl">
                         {menuItems.map((item, index) => {
                             const Icon = item.icon;
