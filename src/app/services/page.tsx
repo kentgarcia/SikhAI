@@ -29,7 +29,7 @@ export default function ServicesPage() {
       
       <main className="flex-grow p-4 overflow-y-auto space-y-6 no-scrollbar">
         <div>
-            <h2 className="text-lg font-semibold text-gray-800 mb-4">How Can We Help You Today?</h2>
+            <h2 className="text-lg font-semibold text-gray-800 mb-4 text-center">How Can We Help You Today?</h2>
             <div className="grid grid-cols-2 gap-4">
                 {quickActions.map((item) => {
                     const Icon = item.icon;
