@@ -65,6 +65,9 @@ export default function DashboardPage() {
             transition={{ duration: 0.5 }}
             className="relative bg-transparent rounded-xl p-6 overflow-hidden flex items-center border border-[#E7E7E7]"
         >
+            <div className="absolute -top-8 -left-8 w-24 h-24 bg-primary/10 rounded-full animate-pulse"></div>
+            <div className="absolute -bottom-10 -right-4 w-24 h-24 bg-primary/10 rounded-full animate-pulse [animation-delay:500ms]"></div>
+
             <div className="relative z-10 w-1/2">
                 <h3 className="text-lg font-semibold text-gray-800">Good day, Juan!</h3>
                 <p className="text-xs text-gray-600 mt-2">I'm <span className="text-primary">Rosa</span>, your smart and caring companion from Sta. Rosa, ready to guide you trough your day!</p>
