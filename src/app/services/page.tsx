@@ -50,27 +50,31 @@ export default function ServicesPage() {
 
         <Separator />
         
-        <div className="space-y-4">
+        <div className="grid grid-cols-2 gap-4">
             <Card style={{ backgroundColor: '#FFF5E7' }}>
-                <CardContent className="p-4">
-                    <p className="text-2xl mb-2">📌</p>
-                    <h3 className="font-semibold text-sm">Quick Guide</h3>
-                    <p className="text-xs text-muted-foreground mb-3">Need to renew your business permit soon?</p>
-                    <Button variant="link" className="p-0 h-auto text-xs" style={{ color: '#A4040A' }}>
+                <CardContent className="p-4 flex flex-col justify-between h-full">
+                    <div>
+                        <p className="text-2xl mb-2">📌</p>
+                        <h3 className="font-semibold text-sm">Quick Guide</h3>
+                        <p className="text-xs text-muted-foreground mb-3">Need to renew your business permit soon?</p>
+                    </div>
+                    <Button variant="link" className="p-0 h-auto text-xs justify-start" style={{ color: '#A4040A' }}>
                         Check e-Gov Services now!
                         <ArrowRight className="w-4 h-4 ml-1" />
                     </Button>
                 </CardContent>
             </Card>
             <Card>
-                <CardContent className="p-4 flex items-center">
-                    <div className="flex-1 space-y-2">
+                <CardContent className="p-4 flex flex-col justify-between h-full">
+                    <div className="space-y-1">
                         <h3 className="font-semibold text-sm">Need help with a service?</h3>
                         <p className="text-2xl" style={{color: '#A4040A'}}>Ask Rosa!</p>
-                        <Button size="sm" className="h-8 text-xs" style={{ backgroundColor: '#A4040A' }}>Ask Rosa</Button>
                     </div>
-                    <div className="w-24 h-24 relative">
-                        <Image src="/images/rosaWave.png" alt="Rosa AI" layout="fill" objectFit="contain" data-ai-hint="robot waving" />
+                    <div className="flex items-end justify-between">
+                        <Button size="sm" className="h-8 text-xs" style={{ backgroundColor: '#A4040A' }}>Ask Rosa</Button>
+                        <div className="w-16 h-16 relative">
+                            <Image src="/images/rosaWave.png" alt="Rosa AI" layout="fill" objectFit="contain" data-ai-hint="robot waving" />
+                        </div>
                     </div>
                 </CardContent>
             </Card>
