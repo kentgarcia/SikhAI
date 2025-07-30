@@ -17,7 +17,7 @@ export default function Navbar({ activePage }: NavbarProps) {
         { id: 'home', icon: Home, label: 'Home', href: '/dashboard' },
         { id: 'news', icon: Newspaper, label: 'News', href: '/news' },
         { id: 'services', icon: Briefcase, label: 'Services', href: '/services' },
-        { id: 'account', icon: User, label: 'Account', href: '#' },
+        { id: 'account', icon: User, label: 'Account', href: '/account' },
     ]
 
     return (
