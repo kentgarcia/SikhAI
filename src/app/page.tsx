@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Shield, Fingerprint, Phone, Building2, ArrowRightLeft, LoaderCircle } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 
 const LoginPage = ({ onLogin }: { onLogin: () => void }) => {
   return (
@@ -17,7 +18,7 @@ const LoginPage = ({ onLogin }: { onLogin: () => void }) => {
       className="flex flex-col h-full bg-background p-8"
     >
       <div className="flex-grow flex flex-col items-center justify-center space-y-8">
-        <Building2 className="text-primary h-16 w-16" />
+        <Image src="/images/icon_logo.png" alt="Logo" width={64} height={64} />
 
         <div className="text-center">
           <h1 className="text-2xl font-semibold">Welcome Back!</h1>
@@ -72,7 +73,7 @@ const SplashScreen = () => (
     transition={{ duration: 0.5 }}
     className="flex h-full w-full items-center justify-center bg-background"
   >
-    <Building2 className="text-primary h-24 w-24 animate-pulse" />
+    <Image src="/images/icon_logo.png" alt="Logo" width={96} height={96} className="animate-pulse" />
   </motion.div>
 );
 
@@ -121,3 +122,5 @@ export default function Page() {
     </AnimatePresence>
   );
 }
+
+    

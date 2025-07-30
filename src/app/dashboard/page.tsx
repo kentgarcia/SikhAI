@@ -216,10 +216,12 @@ export default function DashboardPage() {
         </div>
         <div className="absolute -top-8 left-1/2 -translate-x-1/2">
             <Button size="icon" className="bg-primary hover:bg-primary/90 rounded-full w-16 h-16 shadow-lg">
-                <Sparkles className="h-8 w-8 text-primary-foreground" />
+                 <Image src="/images/icon_logo.png" alt="AI" width={40} height={40} />
             </Button>
         </div>
       </nav>
     </div>
   );
 }
+
+    
