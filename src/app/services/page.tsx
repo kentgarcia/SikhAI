@@ -58,21 +58,21 @@ export default function ServicesPage() {
         </div>
       </header>
       
-      <main className="flex-grow p-4 overflow-y-auto space-y-6 no-scrollbar">
-        <h2 className="text-lg font-semibold text-center">How can we help you today?</h2>
+      <main className="flex-grow p-4 overflow-y-auto space-y-6 no-scrollbar flex flex-col">
+        <h2 className="text-lg font-semibold text-center mb-2">How can we help you today?</h2>
 
-        <div className="space-y-4">
+        <div className="flex-grow grid grid-cols-2 grid-rows-2 gap-4">
             {services.map((service, index) => {
                 const Icon = service.icon;
                 return (
-                    <Card key={index} className="overflow-hidden" onClick={() => {}}>
-                        <CardContent className="p-0 flex items-stretch">
-                            <div className={`w-20 h-auto flex items-center justify-center text-white ${service.color}`}>
-                                <Icon className="w-8 h-8" />
+                    <Card key={index} className="overflow-hidden flex flex-col" onClick={() => {}}>
+                        <CardContent className="p-0 flex flex-col flex-grow">
+                            <div className={`flex-shrink-0 h-20 flex items-center justify-center text-white ${service.color}`}>
+                                <Icon className="w-10 h-10" />
                             </div>
-                            <div className="p-4">
-                                <h3 className="font-semibold text-md mb-1">{service.title}</h3>
-                                <p className="text-xs text-muted-foreground">{service.description}</p>
+                            <div className="p-3 flex flex-col flex-grow">
+                                <h3 className="font-semibold text-sm mb-1">{service.title}</h3>
+                                <p className="text-xs text-muted-foreground flex-grow">{service.description}</p>
                             </div>
                         </CardContent>
                     </Card>
