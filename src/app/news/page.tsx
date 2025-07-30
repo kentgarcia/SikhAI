@@ -108,7 +108,7 @@ export default function NewsPage() {
           
           <div className="w-16"></div>
 
-          <Button variant="ghost" className="flex flex-col h-auto items-center text-muted-foreground">
+          <Button variant="ghost" className="flex flex-col h-auto items-center text-muted-foreground" onClick={() => router.push('/services')}>
             <Briefcase className="h-6 w-6" />
             <span className="text-xs mt-1">Services</span>
           </Button>
