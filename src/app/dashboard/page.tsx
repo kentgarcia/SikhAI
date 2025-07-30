@@ -9,6 +9,7 @@ import Image from 'next/image';
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import Header from '@/components/layout/Header';
 import Navbar from '@/components/layout/Navbar';
+import data from '@/lib/data.json';
 
 const quickActions = [
     { icon: Heart, label: "Health", href: "#" },
@@ -17,12 +18,11 @@ const quickActions = [
     { icon: Building, label: "e-Gov", href: "#" },
 ]
 
-const newsItems = [
-    { title: "City Opens New Community Park", image: "https://placehold.co/600x400.png", imageHint: "park community" },
-    { title: "Annual Festival Dates Announced", image: "https://placehold.co/600x400.png", imageHint: "festival announcement" },
-    { title: "New Traffic Scheme Implemented", image: "https://placehold.co/600x400.png", imageHint: "traffic road" },
-    { title: "Tech Hub to Rise in Santa Rosa", image: "https://placehold.co/600x400.png", imageHint: "tech building" },
-]
+const newsItems = data.news.slice(0, 4).map(item => ({
+    title: item.title,
+    image: item.image,
+    imageHint: item.category.toLowerCase()
+}));
 
 const eventItems = [
     { title: "Sikhayan Festival", date: "FEB 10-18, 2025", image: "https://placehold.co/600x400.png", imageHint: "festival parade" },
