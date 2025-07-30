@@ -3,7 +3,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ArrowLeft, Search, Home, Newspaper, Briefcase, User } from "lucide-react";
+import { ArrowLeft, Search, Home, Newspaper, Briefcase, User, Languages, Bell } from "lucide-react";
 import Image from 'next/image';
 import { useRouter } from "next/navigation";
 import { Input } from "@/components/ui/input";
@@ -28,12 +28,19 @@ export default function NewsPage() {
 
   return (
     <div className="flex flex-col h-full bg-background">
-      <header className="flex items-center p-4 border-b">
-        <Button variant="ghost" size="icon" onClick={() => router.back()}>
-          <ArrowLeft className="h-6 w-6" />
-        </Button>
-        <h1 className="text-xl font-semibold text-center flex-grow">News and Events</h1>
-        <div className="w-8"></div>
+      <header className="flex items-center justify-between p-4 border-b">
+        <div className="flex items-center gap-3">
+            <Image src="/images/icon_logo.png" alt="Logo" width={32} height={32} />
+            <h1 className="text-xl font-semibold">News and Events</h1>
+        </div>
+        <div className="flex items-center gap-2">
+            <Button variant="ghost" size="icon">
+              <Languages className="h-6 w-6" />
+            </Button>
+            <Button variant="ghost" size="icon">
+              <Bell className="h-6 w-6" />
+            </Button>
+        </div>
       </header>
       
       <main className="flex-grow p-4 overflow-y-auto space-y-6 no-scrollbar">
@@ -72,13 +79,13 @@ export default function NewsPage() {
              {newsItems.map((item, index) => (
                 <Card key={index} className="overflow-hidden" onClick={() => {}}>
                     <CardContent className="p-0 flex">
-                        <div className="w-2/3 p-4">
-                            <h3 className="font-semibold text-base mb-2 leading-tight">{item.title}</h3>
-                            <p className="text-sm text-muted-foreground mb-2 line-clamp-2">{item.description}</p>
-                            <p className="text-xs text-muted-foreground">{item.date}</p>
-                        </div>
                         <div className="w-1/3">
                             <Image src={item.image} alt={item.title} width={150} height={150} className="w-full h-full object-cover" data-ai-hint={item.imageHint} />
+                        </div>
+                        <div className="w-2/3 p-3">
+                            <h3 className="font-semibold text-sm mb-1 leading-tight">{item.title}</h3>
+                            <p className="text-xs text-muted-foreground mb-2 line-clamp-2">{item.description}</p>
+                            <p className="text-xs text-muted-foreground">{item.date}</p>
                         </div>
                     </CardContent>
                 </Card>
@@ -119,4 +126,3 @@ export default function NewsPage() {
     </div>
   );
 }
-
