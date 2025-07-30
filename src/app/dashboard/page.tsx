@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
-import { Bell, Home, Newspaper, Sparkles, User, Briefcase, Calendar, Heart, Shield, GraduationCap, Building, ArrowRight, MapPin, CloudSun, Car, Languages } from "lucide-react";
+import { Bell, Home, Newspaper, Sparkles, User, Briefcase, Calendar, Heart, Shield, GraduationCap, Building, ArrowRight, MapPin, CloudSun, Car, Languages, Wind, Cloudy, Sunset, Sun, CloudRain } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Image from 'next/image';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
@@ -30,6 +30,14 @@ const eventItems = [
     { title: "Christmas Lighting Ceremony", date: "DEC 01, 2024", image: "https://placehold.co/600x400.png", imageHint: "christmas lights" },
 ]
 
+const hourlyForecast = [
+    { time: "4PM", icon: Cloudy, temp: "30°C", condition: "Mostly Cloudy" },
+    { time: "5PM", icon: Wind, temp: "29°C", condition: "Windy" },
+    { time: "6PM", icon: Cloudy, temp: "29°C", condition: "Overcast" },
+    { time: "6:25PM", icon: Sunset, temp: "29°C", condition: "Sunset" },
+    { time: "7PM", icon: Cloudy, temp: "29°C", condition: "Overcast" },
+    { time: "7:25PM", icon: Cloudy, temp: "29°C", condition: "Overcast" },
+]
 
 export default function DashboardPage() {
   const router = useRouter();
@@ -143,32 +151,43 @@ export default function DashboardPage() {
             </Carousel>
         </div>
 
-        {/* Weather and Traffic */}
-        <div className="grid grid-cols-2 gap-4">
-            <div>
-                <h3 className="text-lg font-semibold mb-4">Weather</h3>
-                <Card>
-                    <CardContent className="pt-6 flex items-center gap-4">
-                        <CloudSun className="w-10 h-10 text-primary" />
-                        <div>
-                            <p className="text-2xl font-semibold">32°C</p>
-                            <p className="text-sm text-muted-foreground">Santa Rosa, Laguna</p>
+        {/* Weather Updates */}
+        <div>
+            <h3 className="text-lg font-semibold mb-4">Weather Updates</h3>
+            <Card className="bg-gradient-to-br from-blue-100 to-blue-200/80 text-gray-800 p-4">
+                <CardContent className="p-0">
+                    <div className="flex justify-between items-start mb-4">
+                        <div className="space-y-1">
+                            <div className="flex items-center gap-1.5">
+                                <MapPin className="w-4 h-4" />
+                                <p className="font-medium">Sta. Rosa, Laguna</p>
+                            </div>
+                            <p className="text-5xl font-bold">27°C</p>
+                            <p className="text-sm">Today, Mon</p>
                         </div>
-                    </CardContent>
-                </Card>
-            </div>
-            <div>
-                <h3 className="text-lg font-semibold mb-4">Traffic</h3>
-                <Card>
-                    <CardContent className="pt-6 flex items-center gap-4">
-                        <Car className="w-10 h-10 text-primary" />
-                        <div>
-                            <p className="text-lg font-semibold">Light</p>
-                            <p className="text-sm text-muted-foreground">As of 5:00 PM</p>
+                        <div className="text-right">
+                            <p className="font-semibold mb-1">Mostly Rainy</p>
+                            <div className="relative">
+                               <CloudRain className="w-16 h-16 text-gray-600" />
+                               <Sparkles className="w-5 h-5 text-yellow-400 absolute top-0 right-0" />
+                            </div>
                         </div>
-                    </CardContent>
-                </Card>
-            </div>
+                    </div>
+                    <div className="flex justify-between space-x-2 text-center overflow-x-auto no-scrollbar -mx-4 px-4">
+                        {hourlyForecast.map((item, index) => {
+                            const Icon = item.icon
+                            return (
+                                <div key={index} className="flex flex-col items-center space-y-1 min-w-[60px]">
+                                    <p className="text-xs">{item.time}</p>
+                                    <Icon className="w-6 h-6 text-gray-700" />
+                                    <p className="text-xs truncate">{item.condition}</p>
+                                    <p className="text-xs font-semibold">{item.temp}</p>
+                                </div>
+                            )
+                        })}
+                    </div>
+                </CardContent>
+            </Card>
         </div>
       </main>
 
