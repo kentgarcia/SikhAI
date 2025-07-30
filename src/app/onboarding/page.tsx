@@ -6,29 +6,29 @@ import { Button } from "@/components/ui/button";
 import Image from 'next/image';
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from 'next/navigation';
-import { FileText, PieChart, ShieldCheck, ArrowLeft, ArrowRight } from 'lucide-react';
+import { Home, Bot, LayoutGrid, ArrowLeft, ArrowRight } from 'lucide-react';
 
 const onboardingSteps = [
   {
-    icon: FileText,
-    title: "Manage Transactions",
-    description: "Easily view and manage all your recent transactions in one place.",
-    image: "https://placehold.co/300x200.png",
-    imageHint: "transactions list"
+    icon: Home,
+    title: "Welcome to SikhAI",
+    description: "Your one-stop app for real-time updates, local events, and public services in Sta. Rosa",
+    image: "/images/onboarding1.png",
+    imageHint: "city welcome"
   },
   {
-    icon: PieChart,
-    title: "Track Your Spending",
-    description: "Visualize your spending habits with insightful charts and graphs.",
-    image: "https://placehold.co/300x200.png",
-    imageHint: "charts analytics"
+    icon: Bot,
+    title: "Meet Rosa, Your AI Guide",
+    description: "Hi! I'm Rosa, your friendly and respectful AI companion. I'll help you stay informed, safe, and connected every day.",
+    image: "/images/onboarding2.png",
+    imageHint: "ai robot"
   },
   {
-    icon: ShieldCheck,
-    title: "Secure Your Account",
-    description: "Your security is our priority. Enjoy peace of mind with top-notch protection.",
-    image: "https://placehold.co/300x200.png",
-    imageHint: "security shield"
+    icon: LayoutGrid,
+    title: "One App. Many Services.",
+    description: "Access health tools, scholarships, job updates, and government services with ease. Rosa is here to help every step of the way.",
+    image: "/images/onboarding3.png",
+    imageHint: "app services"
   }
 ];
 
