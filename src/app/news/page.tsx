@@ -53,11 +53,11 @@ export default function NewsPage() {
 
         <Tabs defaultValue="all" className="w-full">
           <TabsList className="grid w-full grid-cols-5 bg-muted/60">
-            <TabsTrigger value="all">All</TabsTrigger>
-            <TabsTrigger value="top">Top News</TabsTrigger>
-            <TabsTrigger value="recent">Recent</TabsTrigger>
-            <TabsTrigger value="videos">Videos</TabsTrigger>
-            <TabsTrigger value="others">Others</TabsTrigger>
+            <TabsTrigger value="all" className="text-xs">All</TabsTrigger>
+            <TabsTrigger value="top" className="text-xs">Top News</TabsTrigger>
+            <TabsTrigger value="recent" className="text-xs">Recent</TabsTrigger>
+            <TabsTrigger value="videos" className="text-xs">Videos</TabsTrigger>
+            <TabsTrigger value="others" className="text-xs">Others</TabsTrigger>
           </TabsList>
           <TabsContent value="all" className="space-y-4">
              {newsItems.map((item, index) => (
