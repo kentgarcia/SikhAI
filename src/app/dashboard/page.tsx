@@ -10,6 +10,7 @@ import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carouse
 import Header from '@/components/layout/Header';
 import Navbar from '@/components/layout/Navbar';
 import data from '@/lib/data.json';
+import { formatDistanceToNow } from 'date-fns';
 
 const quickActions = [
     { icon: Heart, label: "Health", href: "#" },
@@ -19,8 +20,7 @@ const quickActions = [
 ]
 
 const newsItems = data.news.slice(0, 4).map(item => ({
-    title: item.title,
-    image: item.image,
+    ...item,
     imageHint: item.category.toLowerCase()
 }));
 
@@ -72,15 +72,20 @@ export default function DashboardPage() {
           
         <div>
             <h3 className="text-lg font-semibold mb-4">Local News & Announcements</h3>
-            <Carousel opts={{ loop: true }} className="w-full">
+            <Carousel opts={{ loop: true, align: "start" }} className="w-full">
                 <CarouselContent>
                     {newsItems.map((item, index) => (
                         <CarouselItem key={index} className="basis-2/3">
-                            <Card className="overflow-hidden">
+                            <Card className="overflow-hidden rounded-xl">
                                 <CardContent className="p-0">
-                                    <Image src={item.image} alt={item.title} width={300} height={150} className="w-full h-24 object-cover" data-ai-hint={item.imageHint} />
+                                    <Image src={item.image} alt={item.title} width={300} height={150} className="w-full h-28 object-cover" data-ai-hint={item.imageHint} />
                                     <div className="p-3">
-                                        <p className="font-semibold text-sm truncate">{item.title}</p>
+                                        <div className="flex justify-between items-start">
+                                            <h4 className="font-semibold text-xs leading-snug flex-1 pr-2 line-clamp-3">
+                                                {item.title.substring(0, 50)}{item.title.length > 50 && '...'} <a href="#" className="text-primary hover:underline">Read more</a>
+                                            </h4>
+                                            <p className="text-xs text-muted-foreground whitespace-nowrap">{formatDistanceToNow(new Date(item.date), { addSuffix: true })}</p>
+                                        </div>
                                     </div>
                                 </CardContent>
                             </Card>
