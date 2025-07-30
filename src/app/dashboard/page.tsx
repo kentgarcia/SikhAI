@@ -4,13 +4,13 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { motion } from "framer-motion";
-import { Heart, Shield, GraduationCap, Building, MapPin, Cloudy, Wind, Sunset, CloudRain } from "lucide-react";
+import { Heart, Shield, GraduationCap, Building, MapPin, Cloudy, Wind, Sunset, CloudRain, Calendar } from "lucide-react";
 import Image from 'next/image';
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import Header from '@/components/layout/Header';
 import Navbar from '@/components/layout/Navbar';
 import data from '@/lib/data.json';
-import { formatDistanceToNow } from 'date-fns';
+import { formatDistanceToNow, format } from 'date-fns';
 
 const quickActions = [
     { icon: Heart, label: "Health", href: "#" },
@@ -24,11 +24,15 @@ const newsItems = data.news.slice(0, 4).map(item => ({
     imageHint: item.category.toLowerCase()
 }));
 
-const eventItems = [
-    { title: "Sikhayan Festival", date: "FEB 10-18, 2025", image: "https://placehold.co/600x400.png", imageHint: "festival parade" },
-    { title: "Santa Rosa Cityhood Anniversary", date: "JUL 10, 2025", image: "https://placehold.co/600x400.png", imageHint: "city hall" },
-    { title: "Christmas Lighting Ceremony", date: "DEC 01, 2024", image: "https://placehold.co/600x400.png", imageHint: "christmas lights" },
-]
+const eventItems = data.upcomingEvents.map(event => {
+    const eventDate = new Date(event.date);
+    return {
+        ...event,
+        day: format(eventDate, 'dd'),
+        month: format(eventDate, 'MMM'),
+        imageHint: event.title.toLowerCase().split(' ').slice(0,2).join(' ')
+    };
+});
 
 const hourlyForecast = [
     { time: "4PM", icon: Cloudy, temp: "30°C", condition: "Mostly Cloudy" },
@@ -116,17 +120,31 @@ export default function DashboardPage() {
         </div>
 
         <div>
-            <h3 className="text-lg font-semibold mb-4">Santa Rosa Events</h3>
+            <div className="flex justify-between items-center mb-4">
+                <h3 className="text-lg font-semibold">Santa Rosa Events</h3>
+                <Button variant="link" className="text-primary">
+                    <Calendar className="w-4 h-4 mr-2"/>
+                    View calendar
+                </Button>
+            </div>
             <Carousel opts={{ loop: true }} className="w-full">
                 <CarouselContent>
                     {eventItems.map((item, index) => (
                         <CarouselItem key={index} className="basis-4/5">
-                            <Card className="overflow-hidden relative text-white">
-                                <Image src={item.image} alt={item.title} width={300} height={150} className="w-full h-32 object-cover" data-ai-hint={item.imageHint} />
-                                <div className="absolute inset-0 bg-black/50 p-4 flex flex-col justify-end">
-                                    <h4 className="font-semibold text-lg">{item.title}</h4>
-                                    <p className="text-sm flex items-center gap-2"><MapPin className="w-4 h-4" /> {item.date}</p>
-                                </div>
+                            <Card className="overflow-hidden rounded-xl">
+                                <CardContent className="p-0">
+                                    <Image src={item.image} alt={item.title} width={300} height={150} className="w-full h-32 object-cover" data-ai-hint={item.imageHint} />
+                                    <div className="p-4 flex items-center gap-4">
+                                        <div className="text-center">
+                                            <p className="text-xl font-bold">{item.day}</p>
+                                            <p className="text-sm text-muted-foreground">{item.month}</p>
+                                        </div>
+                                        <div>
+                                            <h4 className="font-semibold text-sm">{item.title}</h4>
+                                            <p className="text-xs text-muted-foreground">{item.description}</p>
+                                        </div>
+                                    </div>
+                                </CardContent>
                             </Card>
                         </CarouselItem>
                     ))}
