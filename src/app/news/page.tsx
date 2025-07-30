@@ -12,7 +12,7 @@ import Navbar from '@/components/layout/Navbar';
 import data from '@/lib/data.json';
 import { formatDistanceToNow } from "date-fns";
 
-const announcements = data.announcements.map(item => ({
+const announcements = data.news.map(item => ({
     ...item,
     imageHint: item.title.toLowerCase().split(' ').slice(0,2).join(' ')
 }));
