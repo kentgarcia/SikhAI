@@ -6,7 +6,7 @@ import Navbar from '@/components/layout/Navbar';
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
-import { Heart, Users, Lightbulb, Building, MapPin, ChevronRight, MessageSquareQuestion, BookOpen } from "lucide-react";
+import { Heart, Users, Lightbulb, Building, MapPin, ChevronRight, MessageSquareQuote, BookOpen } from "lucide-react";
 import Image from 'next/image';
 
 const quickActions = [
@@ -60,7 +60,7 @@ export default function ServicesPage() {
             </Card>
             <Card className="bg-secondary/60">
                 <CardContent className="p-4 flex flex-col items-center text-center">
-                    <MessageSquareQuestion className="w-8 h-8 mb-2 text-secondary-foreground" />
+                    <MessageSquareQuote className="w-8 h-8 mb-2 text-secondary-foreground" />
                     <h3 className="font-semibold text-sm">Need Help?</h3>
                     <p className="text-xs text-muted-foreground">Contact our support team.</p>
                 </CardContent>
