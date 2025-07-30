@@ -92,15 +92,14 @@ export default function DashboardPage() {
                 className="absolute -bottom-1/4 -right-1/4 w-1/2 h-1/2 bg-rose-200/50 rounded-full filter blur-3xl opacity-50"
             ></motion.div>
             <div className="relative z-10 w-2/3">
-                <h3 className="text-xl font-semibold text-gray-800">Meet Rosa, your AI companion!</h3>
-                <p className="text-sm text-gray-600 mt-2">Ask anything about Santa Rosa and get instant answers.</p>
-                <Button className="mt-4">
-                    Ask Rosa
-                    <ArrowRight className="ml-2" />
+                <h3 className="text-xl font-semibold text-gray-800">Good day, Juan!</h3>
+                <p className="text-sm text-gray-600 mt-2">I'm Rosa, your smart and caring companion from Sta. Rosa, ready to guide you trough your day!</p>
+                <Button variant="outline" className="mt-4 rounded-full">
+                    Start talking
                 </Button>
             </div>
             <div className="relative w-1/3 h-24">
-                 <Image src="https://placehold.co/100x100.png" alt="AI companion" layout="fill" objectFit="contain" data-ai-hint="robot mascot" />
+                 <Image src="/images/rosaWave.png" alt="AI companion" layout="fill" objectFit="contain" data-ai-hint="robot waving" />
             </div>
         </motion.div>
           
@@ -223,5 +222,7 @@ export default function DashboardPage() {
     </div>
   );
 }
+
+    
 
     
