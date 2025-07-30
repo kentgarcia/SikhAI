@@ -78,7 +78,7 @@ export default function DashboardPage() {
                 }}
                 className="absolute -top-1/4 -left-1/4 w-96 h-96 rounded-full filter blur-3xl opacity-50"
                 style={{
-                  background: 'radial-gradient(circle, #FEE2E3, #FFF2F3)',
+                  background: 'radial-gradient(circle, #FEE2E3 50%, #FFF2F3 70%)',
                 }}
             ></motion.div>
              <motion.div 
@@ -94,7 +94,7 @@ export default function DashboardPage() {
                 }}
                 className="absolute -bottom-1/4 -right-1/4 w-96 h-96 rounded-full filter blur-3xl opacity-50"
                  style={{
-                  background: 'radial-gradient(circle, #FEE2E3, #FFF2F3)',
+                  background: 'radial-gradient(circle, #FEE2E3 50%, #FFF2F3 70%)',
                 }}
             ></motion.div>
             <div className="relative z-10 w-1/2">
@@ -228,4 +228,3 @@ export default function DashboardPage() {
     </div>
   );
 }
-
