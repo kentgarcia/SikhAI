@@ -6,7 +6,7 @@ import Navbar from '@/components/layout/Navbar';
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
-import { Heart, Users, Lightbulb, Building, MapPin, ChevronRight, MessageSquareQuote, BookOpen, ArrowRight } from "lucide-react";
+import { Heart, Users, Lightbulb, Building, MapPin, ChevronRight, MessageSquareQuote, BookOpen, ArrowRight, Clock, ArrowRightCircle } from "lucide-react";
 import Image from 'next/image';
 
 const quickActions = [
@@ -17,9 +17,9 @@ const quickActions = [
 ]
 
 const queueItems = [
-    { name: "City Hall", distance: "1.2 km away", queue: 22, waitTime: "15-20 min" },
-    { name: "Satelite Office", distance: "3.5 km away", queue: 15, waitTime: "10-15 min" },
-    { name: "Social Services", distance: "2.8 km away", queue: 31, waitTime: "25-30 min" },
+    { name: "Sta. Rosa Health Center", queue: 4, waitTime: "15 mins" },
+    { name: "Satelite Office", queue: 15, waitTime: "10-15 min" },
+    { name: "Social Services", queue: 31, waitTime: "25-30 min" },
 ]
 
 export default function ServicesPage() {
@@ -61,7 +61,7 @@ export default function ServicesPage() {
                         <p className="text-xs text-muted-foreground mt-2">Need to renew your business permit soon?</p>
                     </div>
                     <Button variant="link" className="p-0 h-auto text-xs justify-start" style={{ color: '#A4040A' }}>
-                        <span className="italic text-left">Check e-Gov Services now!</span>
+                        <span className="italic text-left">Check e-Gov <br></br> Services now!</span>
                         <ArrowRight className="w-3 h-3 ml-1" />
                     </Button>
                 </CardContent>
@@ -82,25 +82,29 @@ export default function ServicesPage() {
             </Card>
         </div>
 
-        <div>
-            <h2 className="text-lg font-semibold text-gray-800 mb-4">Nearby Queues</h2>
+        <div className="bg-green-100/50 rounded-lg p-4">
+            <div className="flex justify-between items-center mb-4">
+                <h2 className="text-lg font-semibold text-gray-800 flex items-center gap-2">
+                    <MapPin className="w-5 h-5" /> Nearby Queues
+                </h2>
+                <Button variant="link" className="text-primary text-sm">View all</Button>
+            </div>
             <div className="space-y-3">
-                {queueItems.map((item) => (
-                     <Card key={item.name}>
-                        <CardContent className="p-4 flex items-center">
-                            <div className="flex-1">
-                                <h3 className="font-semibold text-sm text-gray-800">{item.name}</h3>
-                                <p className="text-xs text-muted-foreground flex items-center gap-1">
-                                    <MapPin className="w-3 h-3" />
-                                    {item.distance}
-                                </p>
+                {queueItems.map((item, index) => (
+                     <Card key={index} className="bg-white/80">
+                        <CardContent className="p-3 flex items-center">
+                            <div className="flex-1 space-y-1">
+                                <div className="flex items-center gap-2">
+                                    <div className="w-2 h-2 rounded-full bg-green-500"></div>
+                                    <h3 className="font-semibold text-sm text-gray-800">{item.name}</h3>
+                                </div>
+                                <div className="flex items-center gap-2 text-xs text-muted-foreground ml-4">
+                                    <Clock className="w-3 h-3" />
+                                    <span>Queue: {item.queue} waiting ({item.waitTime})</span>
+                                </div>
                             </div>
-                            <div className="text-right">
-                                <p className="text-lg font-bold" style={{ color: '#A4040A' }}>{item.queue}</p>
-                                <p className="text-xs text-muted-foreground">in queue</p>
-                            </div>
-                            <Button variant="ghost" size="icon" className="ml-2">
-                                <ChevronRight className="w-5 h-5" />
+                            <Button variant="ghost" size="icon" className="text-gray-500 hover:text-primary">
+                                <ArrowRightCircle className="w-6 h-6" />
                             </Button>
                         </CardContent>
                      </Card>
