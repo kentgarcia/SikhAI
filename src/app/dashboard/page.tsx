@@ -63,7 +63,7 @@ export default function DashboardPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="relative bg-white rounded-xl p-6 overflow-hidden flex items-center"
+            className="relative bg-white rounded-xl p-6 overflow-hidden flex items-center shadow-sm"
         >
             <motion.div 
                 animate={{
@@ -76,7 +76,7 @@ export default function DashboardPage() {
                     repeat: Infinity,
                     repeatType: "reverse",
                 }}
-                className="absolute -top-1/4 -left-1/4 w-1/2 h-1/2 bg-primary/10 rounded-full filter blur-3xl opacity-50"
+                className="absolute -top-1/4 -left-1/4 w-1/2 h-1/2 bg-primary/20 rounded-full filter blur-3xl opacity-75"
             ></motion.div>
              <motion.div 
                 animate={{
@@ -89,7 +89,7 @@ export default function DashboardPage() {
                     repeat: Infinity,
                     repeatType: "reverse",
                 }}
-                className="absolute -bottom-1/4 -right-1/4 w-1/2 h-1/2 bg-primary/10 rounded-full filter blur-3xl opacity-50"
+                className="absolute -bottom-1/4 -right-1/4 w-1/2 h-1/2 bg-primary/20 rounded-full filter blur-3xl opacity-75"
             ></motion.div>
             <div className="relative z-10 w-1/2">
                 <h3 className="text-lg font-semibold text-gray-800">Good day, Juan!</h3>
@@ -222,7 +222,3 @@ export default function DashboardPage() {
     </div>
   );
 }
-
-    
-
-    
