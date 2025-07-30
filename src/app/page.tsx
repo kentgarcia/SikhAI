@@ -20,7 +20,7 @@ const LoginPage = ({ onLogin }: { onLogin: () => void }) => {
         <Building2 className="text-primary h-16 w-16" />
 
         <div className="text-center">
-          <h1 className="text-2xl font-bold">Welcome Back!</h1>
+          <h1 className="text-2xl font-semibold">Welcome Back!</h1>
           <p className="text-muted-foreground">Login to continue to Rosa Ciudad</p>
         </div>
 

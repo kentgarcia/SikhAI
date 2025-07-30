@@ -44,7 +44,7 @@ export default function DashboardPage() {
             </Avatar>
             <div>
                 <p className="text-sm text-muted-foreground">Welcome back,</p>
-                <h2 className="text-lg font-bold">Juan Dela Cruz</h2>
+                <h2 className="text-lg font-semibold">Juan Dela Cruz</h2>
             </div>
         </div>
         <div className="flex items-center gap-2">
@@ -92,7 +92,7 @@ export default function DashboardPage() {
                 className="absolute -bottom-1/4 -right-1/4 w-1/2 h-1/2 bg-rose-200/50 rounded-full filter blur-3xl opacity-50"
             ></motion.div>
             <div className="relative z-10 w-2/3">
-                <h3 className="text-xl font-bold text-gray-800">Meet Rosa, your AI companion!</h3>
+                <h3 className="text-xl font-semibold text-gray-800">Meet Rosa, your AI companion!</h3>
                 <p className="text-sm text-gray-600 mt-2">Ask anything about Santa Rosa and get instant answers.</p>
                 <Button className="mt-4">
                     Ask Rosa
@@ -106,7 +106,7 @@ export default function DashboardPage() {
           
         {/* News Carousel */}
         <div>
-            <h3 className="text-lg font-bold mb-4">Local News & Announcements</h3>
+            <h3 className="text-lg font-semibold mb-4">Local News & Announcements</h3>
             <Carousel opts={{ loop: true }} className="w-full">
                 <CarouselContent>
                     {newsItems.map((item, index) => (
@@ -127,7 +127,7 @@ export default function DashboardPage() {
 
         {/* Quick Actions */}
         <div>
-            <h3 className="text-lg font-bold mb-4">Quick Actions</h3>
+            <h3 className="text-lg font-semibold mb-4">Quick Actions</h3>
             <div className="grid grid-cols-4 gap-4 text-center">
                 {quickActions.map((action, index) => {
                     const Icon = action.icon;
@@ -145,7 +145,7 @@ export default function DashboardPage() {
 
         {/* Events Carousel */}
         <div>
-            <h3 className="text-lg font-bold mb-4">Santa Rosa Events</h3>
+            <h3 className="text-lg font-semibold mb-4">Santa Rosa Events</h3>
             <Carousel opts={{ loop: true }} className="w-full">
                 <CarouselContent>
                     {eventItems.map((item, index) => (
@@ -153,7 +153,7 @@ export default function DashboardPage() {
                             <Card className="overflow-hidden relative text-white">
                                 <Image src={item.image} alt={item.title} width={300} height={150} className="w-full h-32 object-cover" data-ai-hint={item.imageHint} />
                                 <div className="absolute inset-0 bg-black/50 p-4 flex flex-col justify-end">
-                                    <h4 className="font-bold text-lg">{item.title}</h4>
+                                    <h4 className="font-semibold text-lg">{item.title}</h4>
                                     <p className="text-sm flex items-center gap-2"><MapPin className="w-4 h-4" /> {item.date}</p>
                                 </div>
                             </Card>
@@ -166,24 +166,24 @@ export default function DashboardPage() {
         {/* Weather and Traffic */}
         <div className="grid grid-cols-2 gap-4">
             <div>
-                <h3 className="text-lg font-bold mb-4">Weather</h3>
+                <h3 className="text-lg font-semibold mb-4">Weather</h3>
                 <Card>
                     <CardContent className="pt-6 flex items-center gap-4">
                         <CloudSun className="w-10 h-10 text-primary" />
                         <div>
-                            <p className="text-2xl font-bold">32°C</p>
+                            <p className="text-2xl font-semibold">32°C</p>
                             <p className="text-sm text-muted-foreground">Santa Rosa, Laguna</p>
                         </div>
                     </CardContent>
                 </Card>
             </div>
             <div>
-                <h3 className="text-lg font-bold mb-4">Traffic</h3>
+                <h3 className="text-lg font-semibold mb-4">Traffic</h3>
                 <Card>
                     <CardContent className="pt-6 flex items-center gap-4">
                         <Car className="w-10 h-10 text-primary" />
                         <div>
-                            <p className="text-lg font-bold">Light</p>
+                            <p className="text-lg font-semibold">Light</p>
                             <p className="text-sm text-muted-foreground">As of 5:00 PM</p>
                         </div>
                     </CardContent>
@@ -208,7 +208,7 @@ export default function DashboardPage() {
           <Button variant="ghost" className="flex flex-col h-auto items-center text-muted-foreground">
             <Briefcase className="h-6 w-6" />
             <span className="text-xs mt-1">Services</span>
-          </Button>
+          Button>
           <Button variant="ghost" className="flex flex-col h-auto items-center text-muted-foreground">
             <User className="h-6 w-6" />
             <span className="text-xs mt-1">Account</span>

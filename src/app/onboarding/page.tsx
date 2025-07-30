@@ -69,7 +69,7 @@ export default function OnboardingPage() {
             className="flex-grow flex flex-col items-center justify-center text-center space-y-4"
           >
               <Icon className="w-12 h-12 text-primary mb-4" />
-              <h1 className="text-2xl font-bold">{title}</h1>
+              <h1 className="text-2xl font-semibold">{title}</h1>
               <p className="text-muted-foreground px-4">{description}</p>
               <div className="relative w-full max-w-xs aspect-video mt-4">
                 <Image
