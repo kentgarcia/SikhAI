@@ -29,7 +29,7 @@ export default function AccountPage() {
                 
                 <div className="p-4 space-y-3 -mt-8">
                     <h3 className="text-lg font-semibold px-2">Account Settings</h3>
-                    <Card className="p-2">
+                    <Card className="p-2 rounded-t-2xl">
                         {menuItems.map((item, index) => {
                             const Icon = item.icon;
                             return (
