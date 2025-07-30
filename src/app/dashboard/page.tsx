@@ -154,7 +154,7 @@ export default function DashboardPage() {
         {/* Weather Updates */}
         <div>
             <h3 className="text-lg font-semibold mb-4">Weather Updates</h3>
-            <Card className="bg-gradient-to-br from-white to-blue-100 text-gray-800 p-4">
+            <Card className="bg-gradient-to-br from-white to-blue-50 text-gray-800 p-4">
                 <CardContent className="p-0">
                     <div className="flex justify-between items-start mb-4">
                         <div className="space-y-1">
@@ -168,7 +168,7 @@ export default function DashboardPage() {
                         <div className="text-right">
                             <p className="font-semibold mb-1">Mostly Rainy</p>
                             <div className="relative">
-                               <CloudRain className="w-16 h-16 text-gray-600" />
+                               <CloudRain className="w-16 h-16 text-gray-500" />
                             </div>
                         </div>
                     </div>
@@ -178,7 +178,7 @@ export default function DashboardPage() {
                             return (
                                 <div key={index} className="flex flex-col items-center space-y-1 min-w-[60px]">
                                     <p className="text-xs">{item.time}</p>
-                                    <Icon className="w-6 h-6 text-gray-700" />
+                                    <Icon className="w-6 h-6 text-gray-600" />
                                     <p className="text-xs truncate">{item.condition}</p>
                                     <p className="text-xs font-semibold">{item.temp}</p>
                                 </div>
