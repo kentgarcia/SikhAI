@@ -63,7 +63,7 @@ export default function DashboardPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="relative bg-rose-50 rounded-xl p-6 overflow-hidden flex items-center"
+            className="relative bg-white rounded-xl p-6 overflow-hidden flex items-center"
         >
             <motion.div 
                 animate={{
@@ -76,7 +76,7 @@ export default function DashboardPage() {
                     repeat: Infinity,
                     repeatType: "reverse",
                 }}
-                className="absolute -top-1/4 -left-1/4 w-1/2 h-1/2 bg-rose-200/50 rounded-full filter blur-3xl opacity-50"
+                className="absolute -top-1/4 -left-1/4 w-1/2 h-1/2 bg-primary/10 rounded-full filter blur-3xl opacity-50"
             ></motion.div>
              <motion.div 
                 animate={{
@@ -89,16 +89,16 @@ export default function DashboardPage() {
                     repeat: Infinity,
                     repeatType: "reverse",
                 }}
-                className="absolute -bottom-1/4 -right-1/4 w-1/2 h-1/2 bg-rose-200/50 rounded-full filter blur-3xl opacity-50"
+                className="absolute -bottom-1/4 -right-1/4 w-1/2 h-1/2 bg-primary/10 rounded-full filter blur-3xl opacity-50"
             ></motion.div>
-            <div className="relative z-10 w-2/3">
-                <h3 className="text-xl font-semibold text-gray-800">Good day, Juan!</h3>
-                <p className="text-sm text-gray-600 mt-2">I'm Rosa, your smart and caring companion from Sta. Rosa, ready to guide you trough your day!</p>
-                <Button variant="outline" className="mt-4 rounded-full">
+            <div className="relative z-10 w-1/2">
+                <h3 className="text-lg font-semibold text-gray-800">Good day, Juan!</h3>
+                <p className="text-xs text-gray-600 mt-2">I'm <span className="text-primary">Rosa</span>, your smart and caring companion from Sta. Rosa, ready to guide you trough your day!</p>
+                <Button variant="outline" className="mt-4 rounded-full border-primary text-primary hover:bg-primary/10 hover:text-primary">
                     Start talking
                 </Button>
             </div>
-            <div className="relative w-1/3 h-24">
+            <div className="relative w-1/2 h-32">
                  <Image src="/images/rosaWave.png" alt="AI companion" layout="fill" objectFit="contain" data-ai-hint="robot waving" />
             </div>
         </motion.div>
