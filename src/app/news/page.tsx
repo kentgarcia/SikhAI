@@ -9,19 +9,18 @@ import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carouse
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Header from '@/components/layout/Header';
 import Navbar from '@/components/layout/Navbar';
+import data from '@/lib/data.json';
+import { formatDistanceToNow } from "date-fns";
 
-const announcements = [
-    { title: "New Traffic Scheme Implemented This Week", image: "https://placehold.co/600x400.png", imageHint: "traffic road" },
-    { title: "City-wide Cleanup Drive on Saturday", image: "https://placehold.co/600x400.png", imageHint: "cleanup community" },
-    { title: "Holiday Market Opens at City Plaza", image: "https://placehold.co/600x400.png", imageHint: "market holiday" },
-];
+const announcements = data.announcements.map(item => ({
+    ...item,
+    imageHint: item.title.toLowerCase().split(' ').slice(0,2).join(' ')
+}));
 
-const newsItems = [
-    { title: "City Opens New Community Park", description: "The new park features a playground, a jogging path, and a picnic area for families to enjoy.", image: "https://placehold.co/600x400.png", imageHint: "park community", category: "Community", date: "2 days ago" },
-    { title: "Annual Festival Dates Announced", description: "The much-awaited Sikhayan Festival will be held from February 10-18, featuring various events.", image: "https://placehold.co/600x400.png", imageHint: "festival announcement", category: "Events", date: "3 days ago" },
-    { title: "Tech Hub to Rise in Santa Rosa", description: "A new technology park is set to begin construction, promising thousands of jobs for residents.", image: "https://placehold.co/600x400.png", imageHint: "tech building", category: "Business", date: "5 days ago" },
-    { title: "Public Library Launches Reading Program", description: "The new program aims to encourage reading among children and young adults with weekly activities.", image: "https://placehold.co/600x400.png", imageHint: "library books", category: "Education", date: "6 days ago" },
-];
+const newsItems = data.news.map(item => ({
+    ...item,
+    imageHint: item.category.toLowerCase()
+}));
 
 export default function NewsPage() {
   return (
@@ -43,7 +42,7 @@ export default function NewsPage() {
                             <Card className="overflow-hidden relative text-white">
                                 <Image src={item.image} alt={item.title} width={300} height={300} className="w-full h-40 object-cover" data-ai-hint={item.imageHint} />
                                 <div className="absolute inset-0 bg-black/50 p-4 flex flex-col justify-end">
-                                    <h4 className="font-semibold text-md">{item.title}</h4>
+                                    <h4 className="font-semibold text-sm leading-snug">{item.title}</h4>
                                 </div>
                             </Card>
                         </CarouselItem>
@@ -67,10 +66,12 @@ export default function NewsPage() {
                         <div className="w-1/3">
                             <Image src={item.image} alt={item.title} width={150} height={150} className="w-full h-full object-cover" data-ai-hint={item.imageHint} />
                         </div>
-                        <div className="w-2/3 p-3">
-                            <h3 className="font-semibold text-sm mb-1 leading-tight">{item.title}</h3>
-                            <p className="text-xs text-muted-foreground mb-2 line-clamp-2">{item.description}</p>
-                            <p className="text-xs text-muted-foreground">{item.date}</p>
+                        <div className="w-2/3 p-3 flex flex-col justify-between">
+                            <div>
+                                <h3 className="font-semibold text-xs mb-1 leading-tight line-clamp-2">{item.title}</h3>
+                                <p className="text-xs text-muted-foreground mb-2 line-clamp-2">{item.description}</p>
+                            </div>
+                            <p className="text-[10px] text-muted-foreground">{formatDistanceToNow(new Date(item.date), { addSuffix: true })}</p>
                         </div>
                     </CardContent>
                 </Card>
