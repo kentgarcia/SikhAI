@@ -6,7 +6,7 @@ import Navbar from '@/components/layout/Navbar';
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
-import { Heart, Users, Lightbulb, Building, MapPin, ChevronRight, MessageSquareQuote, BookOpen } from "lucide-react";
+import { Heart, Users, Lightbulb, Building, MapPin, ChevronRight, MessageSquareQuote, BookOpen, ArrowRight } from "lucide-react";
 import Image from 'next/image';
 
 const quickActions = [
@@ -39,8 +39,8 @@ export default function ServicesPage() {
                                 <div className="w-10 h-10 rounded-lg flex items-center justify-center mb-3" style={{ backgroundColor: item.bgColor }}>
                                     <Icon className="w-6 h-6" style={{ color: item.color }} />
                                 </div>
-                                <h3 className="font-semibold text-sm text-gray-800">{item.title}</h3>
-                                <p className="text-xs text-muted-foreground">{item.description}</p>
+                                <h3 className="font-semibold text-xs text-gray-800">{item.title}</h3>
+                                <p className="text-[11px] text-muted-foreground leading-tight">{item.description}</p>
                            </CardContent>
                         </Card>
                     )
@@ -50,19 +50,28 @@ export default function ServicesPage() {
 
         <Separator />
         
-        <div className="grid grid-cols-2 gap-4">
-            <Card className="bg-primary/10 border-primary/20 text-primary-800">
-                <CardContent className="p-4 flex flex-col items-center text-center">
-                    <BookOpen className="w-8 h-8 mb-2 text-primary" />
+        <div className="space-y-4">
+            <Card style={{ backgroundColor: '#FFF5E7' }}>
+                <CardContent className="p-4">
+                    <p className="text-2xl mb-2">📌</p>
                     <h3 className="font-semibold text-sm">Quick Guide</h3>
-                    <p className="text-xs text-primary/80">Learn how to use the app.</p>
+                    <p className="text-xs text-muted-foreground mb-3">Need to renew your business permit soon?</p>
+                    <Button variant="link" className="p-0 h-auto text-xs" style={{ color: '#A4040A' }}>
+                        Check e-Gov Services now!
+                        <ArrowRight className="w-4 h-4 ml-1" />
+                    </Button>
                 </CardContent>
             </Card>
-            <Card className="bg-secondary/60">
-                <CardContent className="p-4 flex flex-col items-center text-center">
-                    <MessageSquareQuote className="w-8 h-8 mb-2 text-secondary-foreground" />
-                    <h3 className="font-semibold text-sm">Need Help?</h3>
-                    <p className="text-xs text-muted-foreground">Contact our support team.</p>
+            <Card>
+                <CardContent className="p-4 flex items-center">
+                    <div className="flex-1 space-y-2">
+                        <h3 className="font-semibold text-sm">Need help with a service?</h3>
+                        <p className="text-2xl" style={{color: '#A4040A'}}>Ask Rosa!</p>
+                        <Button size="sm" className="h-8 text-xs" style={{ backgroundColor: '#A4040A' }}>Ask Rosa</Button>
+                    </div>
+                    <div className="w-24 h-24 relative">
+                        <Image src="/images/rosaWave.png" alt="Rosa AI" layout="fill" objectFit="contain" data-ai-hint="robot waving" />
+                    </div>
                 </CardContent>
             </Card>
         </div>
@@ -81,7 +90,7 @@ export default function ServicesPage() {
                                 </p>
                             </div>
                             <div className="text-right">
-                                <p className="text-lg font-bold text-primary">{item.queue}</p>
+                                <p className="text-lg font-bold" style={{ color: '#A4040A' }}>{item.queue}</p>
                                 <p className="text-xs text-muted-foreground">in queue</p>
                             </div>
                             <Button variant="ghost" size="icon" className="ml-2">
