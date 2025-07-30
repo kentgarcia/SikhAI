@@ -63,7 +63,7 @@ export default function DashboardPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="relative bg-white rounded-xl p-6 overflow-hidden flex items-center border border-[#E7E7E7]"
+            className="relative bg-transparent rounded-xl p-6 overflow-hidden flex items-center border border-[#E7E7E7]"
         >
             <motion.div 
                 animate={{
