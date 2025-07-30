@@ -154,7 +154,7 @@ export default function DashboardPage() {
         {/* Weather Updates */}
         <div>
             <h3 className="text-lg font-semibold mb-4">Weather Updates</h3>
-            <Card className="bg-gradient-to-br from-blue-100 to-blue-200/80 text-gray-800 p-4">
+            <Card className="bg-gradient-to-br from-white to-blue-100 text-gray-800 p-4">
                 <CardContent className="p-0">
                     <div className="flex justify-between items-start mb-4">
                         <div className="space-y-1">
@@ -162,14 +162,13 @@ export default function DashboardPage() {
                                 <MapPin className="w-4 h-4" />
                                 <p className="font-medium">Sta. Rosa, Laguna</p>
                             </div>
-                            <p className="text-5xl font-bold">27°C</p>
+                            <p className="text-5xl font-semibold">27°C</p>
                             <p className="text-sm">Today, Mon</p>
                         </div>
                         <div className="text-right">
                             <p className="font-semibold mb-1">Mostly Rainy</p>
                             <div className="relative">
                                <CloudRain className="w-16 h-16 text-gray-600" />
-                               <Sparkles className="w-5 h-5 text-yellow-400 absolute top-0 right-0" />
                             </div>
                         </div>
                     </div>
