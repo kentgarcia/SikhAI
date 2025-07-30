@@ -65,32 +65,6 @@ export default function DashboardPage() {
             transition={{ duration: 0.5 }}
             className="relative bg-transparent rounded-xl p-6 overflow-hidden flex items-center border border-[#E7E7E7]"
         >
-            <motion.div 
-                animate={{
-                    x: [-20, 20, -20],
-                    y: [-20, 20, -20],
-                }}
-                transition={{
-                    duration: 10,
-                    ease: "easeInOut",
-                    repeat: Infinity,
-                    repeatType: "reverse",
-                }}
-                className="absolute -top-1/4 -left-1/4 w-96 h-96 rounded-full bg-[#A4040A] filter blur-3xl opacity-10"
-            ></motion.div>
-             <motion.div 
-                animate={{
-                    x: [20, -20, 20],
-                    y: [20, -20, 20],
-                }}
-                transition={{
-                    duration: 12,
-                    ease: "easeInOut",
-                    repeat: Infinity,
-                    repeatType: "reverse",
-                }}
-                className="absolute -bottom-1/4 -right-1/4 w-96 h-96 rounded-full bg-[#A4040A] filter blur-3xl opacity-10"
-            ></motion.div>
             <div className="relative z-10 w-1/2">
                 <h3 className="text-lg font-semibold text-gray-800">Good day, Juan!</h3>
                 <p className="text-xs text-gray-600 mt-2">I'm <span className="text-primary">Rosa</span>, your smart and caring companion from Sta. Rosa, ready to guide you trough your day!</p>
