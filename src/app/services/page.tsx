@@ -39,8 +39,8 @@ export default function ServicesPage() {
                                 <div className="w-10 h-10 rounded-lg flex items-center justify-center mb-3" style={{ backgroundColor: item.bgColor }}>
                                     <Icon className="w-6 h-6" style={{ color: item.color }} />
                                 </div>
-                                <h3 className="font-semibold text-xs text-gray-800">{item.title}</h3>
-                                <p className="text-[11px] text-muted-foreground leading-tight">{item.description}</p>
+                                <h3 className="font-semibold text-sm text-gray-800">{item.title}</h3>
+                                <p className="text-xs text-muted-foreground leading-tight">{item.description}</p>
                            </CardContent>
                         </Card>
                     )
@@ -51,24 +51,26 @@ export default function ServicesPage() {
         <Separator />
         
         <div className="grid grid-cols-2 gap-4">
-            <Card style={{ backgroundColor: '#FFF5E7' }}>
+            <Card className="aspect-square" style={{ backgroundColor: '#FFF5E7' }}>
                 <CardContent className="p-4 flex flex-col justify-between h-full">
                     <div>
-                        <p className="text-2xl mb-2">📌</p>
-                        <h3 className="font-semibold text-sm">Quick Guide</h3>
-                        <p className="text-xs text-muted-foreground mb-3">Need to renew your business permit soon?</p>
+                        <div className="flex items-center gap-2">
+                           <p className="text-xl">📌</p>
+                           <h3 className="font-semibold text-sm">Quick Guide</h3>
+                        </div>
+                        <p className="text-xs text-muted-foreground mt-2">Need to renew your business permit soon?</p>
                     </div>
                     <Button variant="link" className="p-0 h-auto text-xs justify-start" style={{ color: '#A4040A' }}>
                         Check e-Gov Services now!
-                        <ArrowRight className="w-4 h-4 ml-1" />
+                        <ArrowRight className="w-3 h-3 ml-1" />
                     </Button>
                 </CardContent>
             </Card>
-            <Card>
+            <Card className="aspect-square">
                 <CardContent className="p-4 flex flex-col justify-between h-full">
-                    <div className="space-y-1">
+                    <div className="flex-grow">
                         <h3 className="font-semibold text-sm">Need help with a service?</h3>
-                        <p className="text-2xl" style={{color: '#A4040A'}}>Ask Rosa!</p>
+                        <p className="text-2xl font-semibold" style={{color: '#A4040A'}}>Ask Rosa!</p>
                     </div>
                     <div className="flex items-end justify-between">
                         <Button size="sm" className="h-8 text-xs" style={{ backgroundColor: '#A4040A' }}>Ask Rosa</Button>
