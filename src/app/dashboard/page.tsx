@@ -2,13 +2,13 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { motion } from "framer-motion";
-import { useRouter } from "next/navigation";
-import { Bell, Home, Newspaper, Sparkles, User, Briefcase, Calendar, Heart, Shield, GraduationCap, Building, ArrowRight, MapPin, CloudSun, Car, Languages, Wind, Cloudy, Sunset, Sun, CloudRain } from "lucide-react";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Heart, Shield, GraduationCap, Building, MapPin, Cloudy, Wind, Sunset, CloudRain } from "lucide-react";
 import Image from 'next/image';
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
+import Header from '@/components/layout/Header';
+import Navbar from '@/components/layout/Navbar';
 
 const quickActions = [
     { icon: Heart, label: "Health", href: "#" },
@@ -40,27 +40,11 @@ const hourlyForecast = [
 ]
 
 export default function DashboardPage() {
-  const router = useRouter();
-
   return (
     <div className="flex flex-col h-full bg-background">
-      <header className="flex items-center justify-between p-4 border-b">
-        <div className="flex items-center gap-3">
-            <Image src="/images/icon_logo.png" alt="Logo" width={32} height={32} />
-            <h1 className="text-xl font-semibold">Dashboard</h1>
-        </div>
-        <div className="flex items-center gap-2">
-            <Button variant="ghost" size="icon">
-              <Languages className="h-6 w-6" />
-            </Button>
-            <Button variant="ghost" size="icon">
-              <Bell className="h-6 w-6" />
-            </Button>
-        </div>
-      </header>
+      <Header title="Dashboard" />
       
       <main className="flex-grow p-4 overflow-y-auto space-y-8 no-scrollbar">
-        {/* Custom Banner */}
         <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -86,7 +70,6 @@ export default function DashboardPage() {
             </div>
         </motion.div>
           
-        {/* News Carousel */}
         <div>
             <h3 className="text-lg font-semibold mb-4">Local News & Announcements</h3>
             <Carousel opts={{ loop: true }} className="w-full">
@@ -107,7 +90,6 @@ export default function DashboardPage() {
             </Carousel>
         </div>
 
-        {/* Quick Actions */}
         <div>
             <h3 className="text-lg font-semibold mb-4">Quick Actions</h3>
             <div className="grid grid-cols-4 gap-4 text-center">
@@ -125,7 +107,6 @@ export default function DashboardPage() {
             </div>
         </div>
 
-        {/* Events Carousel */}
         <div>
             <h3 className="text-lg font-semibold mb-4">Santa Rosa Events</h3>
             <Carousel opts={{ loop: true }} className="w-full">
@@ -145,7 +126,6 @@ export default function DashboardPage() {
             </Carousel>
         </div>
 
-        {/* Weather Updates */}
         <div>
             <h3 className="text-lg font-semibold mb-4">Weather Updates</h3>
             <Card className="bg-gradient-to-br from-white to-blue-50 text-gray-800 p-4">
@@ -184,36 +164,7 @@ export default function DashboardPage() {
         </div>
       </main>
 
-      <nav className="relative border-t bg-background">
-        <div className="mx-auto max-w-sm flex justify-around items-center h-16">
-          <Button variant="ghost" className="flex flex-col h-auto items-center text-primary">
-            <Home className="h-6 w-6" />
-            <span className="text-xs mt-1">Home</span>
-          </Button>
-          <Button variant="ghost" className="flex flex-col h-auto items-center text-muted-foreground" onClick={() => router.push('/news')}>
-            <Newspaper className="h-6 w-6" />
-            <span className="text-xs mt-1">News</span>
-          </Button>
-          
-          <div className="w-16"></div>
-
-          <Button variant="ghost" className="flex flex-col h-auto items-center text-muted-foreground" onClick={() => router.push('/services')}>
-            <Briefcase className="h-6 w-6" />
-            <span className="text-xs mt-1">Services</span>
-          </Button>
-          <Button variant="ghost" className="flex flex-col h-auto items-center text-muted-foreground">
-            <User className="h-6 w-6" />
-            <span className="text-xs mt-1">Account</span>
-          </Button>
-        </div>
-        <div className="absolute -top-8 left-1/2 -translate-x-1/2">
-            <Button size="icon" className="bg-primary hover:bg-primary/90 rounded-full w-16 h-16 shadow-lg">
-                 <Image src="/images/icon_logo.png" alt="AI" width={40} height={40} />
-            </Button>
-        </div>
-      </nav>
+      <Navbar activePage="home" />
     </div>
   );
 }
-
-    

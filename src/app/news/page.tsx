@@ -1,14 +1,14 @@
 
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ArrowLeft, Search, Home, Newspaper, Briefcase, User, Languages, Bell } from "lucide-react";
+import { Search } from "lucide-react";
 import Image from 'next/image';
-import { useRouter } from "next/navigation";
 import { Input } from "@/components/ui/input";
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import Header from '@/components/layout/Header';
+import Navbar from '@/components/layout/Navbar';
 
 const announcements = [
     { title: "New Traffic Scheme Implemented This Week", image: "https://placehold.co/600x400.png", imageHint: "traffic road" },
@@ -24,24 +24,9 @@ const newsItems = [
 ];
 
 export default function NewsPage() {
-  const router = useRouter();
-
   return (
     <div className="flex flex-col h-full bg-background">
-      <header className="flex items-center justify-between p-4 border-b">
-        <div className="flex items-center gap-3">
-            <Image src="/images/icon_logo.png" alt="Logo" width={32} height={32} />
-            <h1 className="text-xl font-semibold">News and Events</h1>
-        </div>
-        <div className="flex items-center gap-2">
-            <Button variant="ghost" size="icon">
-              <Languages className="h-6 w-6" />
-            </Button>
-            <Button variant="ghost" size="icon">
-              <Bell className="h-6 w-6" />
-            </Button>
-        </div>
-      </header>
+      <Header title="News and Events" />
       
       <main className="flex-grow p-4 overflow-y-auto space-y-6 no-scrollbar">
         <div className="relative">
@@ -95,34 +80,7 @@ export default function NewsPage() {
 
       </main>
 
-      <nav className="relative border-t bg-background">
-        <div className="mx-auto max-w-sm flex justify-around items-center h-16">
-          <Button variant="ghost" className="flex flex-col h-auto items-center text-muted-foreground" onClick={() => router.push('/dashboard')}>
-            <Home className="h-6 w-6" />
-            <span className="text-xs mt-1">Home</span>
-          </Button>
-          <Button variant="ghost" className="flex flex-col h-auto items-center text-primary">
-            <Newspaper className="h-6 w-6" />
-            <span className="text-xs mt-1">News</span>
-          </Button>
-          
-          <div className="w-16"></div>
-
-          <Button variant="ghost" className="flex flex-col h-auto items-center text-muted-foreground" onClick={() => router.push('/services')}>
-            <Briefcase className="h-6 w-6" />
-            <span className="text-xs mt-1">Services</span>
-          </Button>
-          <Button variant="ghost" className="flex flex-col h-auto items-center text-muted-foreground">
-            <User className="h-6 w-6" />
-            <span className="text-xs mt-1">Account</span>
-          </Button>
-        </div>
-        <div className="absolute -top-8 left-1/2 -translate-x-1/2">
-            <Button size="icon" className="bg-primary hover:bg-primary/90 rounded-full w-16 h-16 shadow-lg">
-                 <Image src="/images/icon_logo.png" alt="AI" width={40} height={40} />
-            </Button>
-        </div>
-      </nav>
+      <Navbar activePage="news" />
     </div>
   );
 }
