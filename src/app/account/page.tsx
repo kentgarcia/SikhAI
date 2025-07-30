@@ -18,7 +18,7 @@ const menuItems = [
 export default function AccountPage() {
     return (
         <div className="flex flex-col h-full bg-muted/20">
-            <main className="flex-grow overflow-y-auto no-scrollbar">
+            <main className="flex-1 flex flex-col overflow-hidden">
                 <div className="relative bg-gradient-to-b from-white to-[#FDE7E7] pt-8 pb-12 text-center">
                     <Avatar className="h-24 w-24 mx-auto mb-4 text-4xl font-semibold" style={{backgroundColor: '#F9E9EF'}}>
                         <AvatarFallback className="bg-transparent text-primary">J</AvatarFallback>
@@ -27,9 +27,9 @@ export default function AccountPage() {
                     <p className="text-sm text-muted-foreground">juan.delacruz@example.com</p>
                 </div>
                 
-                <div className="p-4 space-y-3 -mt-8">
+                <div className="flex-1 p-4 space-y-3 -mt-8 overflow-y-auto no-scrollbar">
                     <h3 className="text-lg font-semibold px-2">Account Settings</h3>
-                    <Card className="p-2 rounded-t-2xl">
+                    <Card className="p-2 rounded-2xl">
                         {menuItems.map((item, index) => {
                             const Icon = item.icon;
                             return (
@@ -41,7 +41,7 @@ export default function AccountPage() {
                             )
                         })}
                     </Card>
-                    <Card className="p-2">
+                    <Card className="p-2 rounded-2xl">
                          <div className="flex items-center p-3 hover:bg-muted/50 rounded-lg cursor-pointer text-destructive">
                             <LogOut className="w-6 h-6 mr-4" />
                             <span className="flex-grow text-sm font-medium">Log Out</span>
