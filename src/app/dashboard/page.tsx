@@ -76,10 +76,7 @@ export default function DashboardPage() {
                     repeat: Infinity,
                     repeatType: "reverse",
                 }}
-                className="absolute -top-1/4 -left-1/4 w-96 h-96 rounded-full filter blur-3xl opacity-50"
-                style={{
-                  background: 'radial-gradient(circle, #FEE2E3 50%, #FFF2F3 70%)',
-                }}
+                className="absolute -top-1/4 -left-1/4 w-96 h-96 rounded-full bg-[#A4040A] filter blur-3xl opacity-10"
             ></motion.div>
              <motion.div 
                 animate={{
@@ -92,15 +89,12 @@ export default function DashboardPage() {
                     repeat: Infinity,
                     repeatType: "reverse",
                 }}
-                className="absolute -bottom-1/4 -right-1/4 w-96 h-96 rounded-full filter blur-3xl opacity-50"
-                 style={{
-                  background: 'radial-gradient(circle, #FEE2E3 50%, #FFF2F3 70%)',
-                }}
+                className="absolute -bottom-1/4 -right-1/4 w-96 h-96 rounded-full bg-[#A4040A] filter blur-3xl opacity-10"
             ></motion.div>
             <div className="relative z-10 w-1/2">
                 <h3 className="text-lg font-semibold text-gray-800">Good day, Juan!</h3>
                 <p className="text-xs text-gray-600 mt-2">I'm <span className="text-primary">Rosa</span>, your smart and caring companion from Sta. Rosa, ready to guide you trough your day!</p>
-                <Button variant="outline" className="mt-4 rounded-full border-primary text-primary hover:bg-primary/10 hover:text-primary">
+                <Button variant="outline" className="mt-4 rounded-full border-primary text-primary bg-transparent hover:bg-primary/10 hover:text-primary">
                     Start talking
                 </Button>
             </div>
