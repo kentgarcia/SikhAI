@@ -190,7 +190,7 @@ export default function DashboardPage() {
             <Home className="h-6 w-6" />
             <span className="text-xs mt-1">Home</span>
           </Button>
-          <Button variant="ghost" className="flex flex-col h-auto items-center text-muted-foreground">
+          <Button variant="ghost" className="flex flex-col h-auto items-center text-muted-foreground" onClick={() => router.push('/news')}>
             <Newspaper className="h-6 w-6" />
             <span className="text-xs mt-1">News</span>
           </Button>
