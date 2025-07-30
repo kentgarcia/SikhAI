@@ -1,0 +1,130 @@
+{
+  "news": [
+    {
+      "id": "news-1",
+      "title": "Nutri-slogan & poster making contest",
+      "image": "/images/events/event-1.jpg",
+      "date": "2025-07-15",
+      "category": "Community",
+      "description": "Join the city-wide Nutri-slogan and poster making contest to promote healthy living and nutrition awareness."
+    },
+    {
+      "id": "news-2",
+      "title": "Public Advisory: All face-to-face classes at ALL levels are suspended",
+      "image": "/images/events/event-2.png",
+      "date": "2025-07-14",
+      "category": "Education",
+      "description": "Due to inclement weather, all face-to-face classes in Santa Rosa City are suspended today. Stay safe."
+    },
+    {
+      "id": "news-3",
+      "title": "Nutriquiz contest",
+      "image": "/images/events/event-3.jpg",
+      "date": "2025-07-12",
+      "category": "Education",
+      "description": "Test your knowledge in the annual Nutriquiz contest. Open to all high school students in the city."
+    },
+    {
+      "id": "news-4",
+      "title": "Crowning Moments: Victors of Rosas ng Santa Rosa 2025",
+      "image": "/images/events/event-4.png",
+      "date": "2025-07-11",
+      "category": "Events",
+      "description": "Relive the crowning moments of the Rosas ng Santa Rosa 2025 pageant and celebrate our new ambassadors."
+    },
+    {
+      "id": "news-5",
+      "title": "Santa Rosa marks 21st cityhood with vibrant parade",
+      "image": "/images/events/event-5.jpg",
+      "date": "2025-07-10",
+      "category": "Events",
+      "description": "The city celebrated its 21st Cityhood Anniversary with a grand parade showcasing the local culture and community spirit."
+    },
+    {
+      "id": "news-6",
+      "title": "Gabay sa PWD ID Verification",
+      "image": "/images/events/event-6.jpg",
+      "date": "2025-07-09",
+      "category": "Community",
+      "description": "A step-by-step guide for the verification process of PWD IDs to ensure all persons with disabilities can avail their benefits."
+    },
+    {
+      "id": "news-7",
+      "title": "Libreng Anti-Rabies mass vaccination para sa buwan ng Hulyo 2025",
+      "image": "/images/events/event-8.png",
+      "date": "2025-07-08",
+      "category": "Health",
+      "description": "The City Veterinary Office will conduct a free anti-rabies mass vaccination drive for the month of July. Protect your pets!"
+    },
+    {
+      "id": "news-8",
+      "title": "Celebrating the 111th Anniversary of Iglesia ni Cristo",
+      "image": "/images/events/event-10.png",
+      "date": "2025-07-27",
+      "category": "Community",
+      "description": "The city joins the celebration of the 111th Anniversary of Iglesia ni Cristo, recognizing its contributions to the community."
+    },
+    {
+      "id": "news-9",
+      "title": "Grand Graduation of Pabasa sa Nutrisyon",
+      "image": "/images/events/event-12.png",
+      "date": "2025-07-25",
+      "category": "Education",
+      "description": "Congratulations to all the graduates of the Pabasa sa Nutrisyon program! A milestone in promoting nutrition education."
+    },
+    {
+      "id": "news-10",
+      "title": "Happy 21st Cityhood Anniversary, Santa Rosa",
+      "image": "/images/events/event-6.jpg",
+      "date": "2025-07-10",
+      "category": "Events",
+      "description": "Warmest greetings to all Rosenians on our 21st Cityhood Anniversary! Let's continue to work together for a progressive city."
+    }
+  ],
+  "upcomingEvents": [
+    {
+      "id": "event-1",
+      "title": "Nutri-slogan & poster making contest",
+      "image": "/images/events/event-6.jpg",
+      "date": "AUG 05, 2025",
+      "description": "Showcase your creativity in the Nutri-slogan and poster making contest. A great way to promote health awareness."
+    },
+    {
+      "id": "event-2",
+      "title": "NutriTiktok drama dance",
+      "image": "/images/events/event-9.jpg",
+      "date": "AUG 12, 2025",
+      "description": "Join the fun and exciting NutriTiktok drama dance competition. A modern twist to celebrating nutrition month."
+    },
+    {
+      "id": "event-3",
+      "title": "51st Nutrition Month Celebration",
+      "image": "/images/events/event-6.jpg",
+      "date": "JUL 31, 2025",
+      "description": "Join us for the culminating activity of the 51st Nutrition Month with various fun and educational activities for the whole family."
+    }
+  ],
+  "announcements": [
+    {
+      "id": "announcement-1",
+      "title": "City-wide Cleanup Drive this Weekend",
+      "image": "https://placehold.co/600x400.png",
+      "date": "2025-07-28",
+      "description": "Join the city-wide cleanup drive on Saturday to maintain the cleanliness of our community. Your participation is highly encouraged."
+    },
+    {
+      "id": "announcement-2",
+      "title": "New Traffic Scheme Implementation",
+      "image": "https://placehold.co/600x400.png",
+      "date": "2025-08-01",
+      "description": "A new traffic scheme will be implemented starting next month to ease congestion on major roads. Please be guided accordingly."
+    },
+    {
+      "id": "announcement-3",
+      "title": "Business Permit Renewal Deadline",
+      "image": "https://placehold.co/600x400.png",
+      "date": "2025-08-15",
+      "description": "The deadline for business permit renewal is fast approaching. Renew now to avoid penalties and continue your business operations smoothly."
+    }
+  ]
+}
