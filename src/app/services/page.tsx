@@ -82,33 +82,39 @@ export default function ServicesPage() {
             </Card>
         </div>
 
-        <div className="bg-green-100/50 rounded-lg p-4">
-            <div className="flex justify-between items-center mb-4">
-                <h2 className="text-lg font-semibold text-gray-800 flex items-center gap-2">
-                    <MapPin className="w-5 h-5" /> Nearby Queues
-                </h2>
-                <Button variant="link" className="text-primary text-sm">View all</Button>
-            </div>
-            <div className="space-y-3">
-                {queueItems.map((item, index) => (
-                     <Card key={index} className="bg-white/80">
-                        <CardContent className="p-3 flex items-center">
-                            <div className="flex-1 space-y-1">
-                                <div className="flex items-center gap-2">
-                                    <div className="w-2 h-2 rounded-full bg-green-500"></div>
-                                    <h3 className="font-semibold text-sm text-gray-800">{item.name}</h3>
+        <div 
+            className="relative rounded-lg p-4 overflow-hidden bg-cover bg-center"
+            style={{ backgroundImage: "url('/images/mapbg.jpg')" }}
+        >
+            <div className="absolute inset-0 bg-black/30"></div>
+            <div className="relative z-10">
+                <div className="flex justify-between items-center mb-4">
+                    <h2 className="text-lg font-semibold text-white flex items-center gap-2">
+                        <MapPin className="w-5 h-5" /> Nearby Queues
+                    </h2>
+                    <Button variant="link" className="text-white text-sm">View all</Button>
+                </div>
+                <div className="space-y-3">
+                    {queueItems.map((item, index) => (
+                         <Card key={index} className="bg-white/90 backdrop-blur-sm">
+                            <CardContent className="p-3 flex items-center">
+                                <div className="flex-1 space-y-1">
+                                    <div className="flex items-center gap-2">
+                                        <div className="w-2 h-2 rounded-full bg-green-500"></div>
+                                        <h3 className="font-semibold text-sm text-gray-800">{item.name}</h3>
+                                    </div>
+                                    <div className="flex items-center gap-2 text-xs text-muted-foreground ml-4">
+                                        <Clock className="w-3 h-3" />
+                                        <span>Queue: {item.queue} waiting ({item.waitTime})</span>
+                                    </div>
                                 </div>
-                                <div className="flex items-center gap-2 text-xs text-muted-foreground ml-4">
-                                    <Clock className="w-3 h-3" />
-                                    <span>Queue: {item.queue} waiting ({item.waitTime})</span>
-                                </div>
-                            </div>
-                            <Button variant="ghost" size="icon" className="text-gray-500 hover:text-primary">
-                                <ArrowRightCircle className="w-6 h-6" />
-                            </Button>
-                        </CardContent>
-                     </Card>
-                ))}
+                                <Button variant="ghost" size="icon" className="text-gray-500 hover:text-primary">
+                                    <ArrowRightCircle className="w-6 h-6" />
+                                </Button>
+                            </CardContent>
+                         </Card>
+                    ))}
+                </div>
             </div>
         </div>
 
