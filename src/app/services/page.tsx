@@ -83,16 +83,14 @@ export default function ServicesPage() {
         </div>
 
         <div 
-            className="relative rounded-lg p-4 overflow-hidden bg-cover bg-center"
-            style={{ backgroundImage: "url('/images/mapbg.jpg')" }}
+            className="relative rounded-lg p-4 overflow-hidden bg-gradient-to-b from-white to-gray-100"
         >
-            <div className="absolute inset-0 bg-black/30"></div>
             <div className="relative z-10">
                 <div className="flex justify-between items-center mb-4">
-                    <h2 className="text-lg font-semibold text-white flex items-center gap-2">
+                    <h2 className="text-lg font-semibold text-gray-800 flex items-center gap-2">
                         <MapPin className="w-5 h-5" /> Nearby Queues
                     </h2>
-                    <Button variant="link" className="text-white text-sm">View all</Button>
+                    <Button variant="link" className="text-primary text-sm">View all</Button>
                 </div>
                 <div className="space-y-3">
                     {queueItems.map((item, index) => (
