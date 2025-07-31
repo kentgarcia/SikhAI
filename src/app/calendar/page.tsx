@@ -9,6 +9,7 @@ import { ChevronLeft, MapPin, Bell, Calendar as CalendarIcon, SlidersHorizontal 
 import { useRouter } from 'next/navigation';
 import data from '@/lib/data.json';
 import { format, parse, isSameDay } from 'date-fns';
+import Navbar from '@/components/layout/Navbar';
 
 const eventItems = data.upcomingEvents.map(event => {
     // data.json date format is "AUG 05, 2025"
@@ -139,6 +140,7 @@ export default function CalendarPage() {
                     )}
                 </div>
             </main>
+            <Navbar activePage="home" />
         </div>
     );
 }
