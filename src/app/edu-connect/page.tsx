@@ -1,8 +1,9 @@
+"use client";
+
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
-import { ChevronLeft } from 'lucide-react';
+import { ChevronLeft, BookOpen, Globe, Calendar } from 'lucide-react'; // Added icons
 import { useRouter } from 'next/navigation';
-import Image from 'next/image';
 
 const EduConnectPage: React.FC = () => {
     const router = useRouter();
@@ -11,6 +12,12 @@ const EduConnectPage: React.FC = () => {
         router.back();
     };
 
+    const services = [
+        { title: "Scholarship Application", icon: BookOpen, href: "#" }, // Replace # with actual href
+        { title: "Online Modules & Resource Hub", icon: Globe, href: "#" }, // Replace # with actual href
+        { title: "Skills Training Events", icon: Calendar, href: "#" }, // Replace # with actual href
+    ];
+
     return (
         <div className="min-h-screen bg-gray-100 flex flex-col">
             <div className="flex items-center p-4 bg-white shadow-md">
@@ -18,24 +25,22 @@ const EduConnectPage: React.FC = () => {
                 <h1 className="text-xl font-semibold ml-4">EduConnect</h1>
             </div>
 
-            <main className="flex-grow p-4 flex flex-col items-center justify-center">
-                <h2 className="text-lg font-medium mb-6">Choose a EduConnect service</h2>
-
-                <div className="grid grid-cols-2 gap-4 w-full max-w-md">
-                    <Card className="flex flex-col items-center justify-center text-center p-4">
-                        <Image src="/images/scholarship.png" alt="Scholarship Application" width={40} height={40} />
-                        <CardContent className="mt-2 p-0">Scholarship Application</CardContent>
-                    </Card>
-
-                    <Card className="flex flex-col items-center justify-center text-center p-4">
-                        <Image src="/images/online-modules.png" alt="Online Modules & Resource Hub" width={40} height={40} />
-                        <CardContent className="mt-2 p-0">Online Modules & Resource Hub</CardContent>
-                    </Card>
-
-                    <Card className="flex flex-col items-center justify-center text-center p-4 col-span-2">
-                        <Image src="/images/training-events.png" alt="Skills Training Events" width={40} height={40} />
-                        <CardContent className="mt-2 p-0">Skills Training Events</CardContent>
-                    </Card>
+            <main className="flex-grow p-4 flex flex-col items-center">
+                 <p className="text-gray-600 mb-6 text-center">Choose a EduConnect service</p>
+                <div className="w-full max-w-md space-y-3">
+                    {services.map((service, index) => (
+                        <Card key={index} className="flex items-center justify-between p-4 hover:bg-gray-50 cursor-pointer">
+                            <div className="flex items-center space-x-4">
+                                <div className="p-2 rounded-full bg-blue-100">
+                                     <service.icon className="h-6 w-6 text-blue-600" />
+                                </div>
+                                <CardContent className="p-0 text-lg font-medium">
+                                    {service.title}
+                                </CardContent>
+                            </div>
+                            <ChevronLeft className="h-5 w-5 text-gray-400 transform rotate-180" />
+                        </Card>
+                    ))}
                 </div>
             </main>
 
