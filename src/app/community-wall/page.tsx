@@ -9,7 +9,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
 const menuItems = [
-    { icon: Users, label: "Volunteer Drives", href: "#" },
+    { icon: Users, label: "Volunteer Drives", href: "/community-wall/volunteer-drives" },
     { icon: ClipboardList, label: "Community Polls and Feedback", href: "#" },
     { icon: Search, label: "Lost and Found Boards", href: "#" },
     { icon: Briefcase, label: "Local Jobs Opening", href: "#" },
