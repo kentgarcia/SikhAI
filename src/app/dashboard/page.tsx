@@ -12,6 +12,7 @@ import Navbar from '@/components/layout/Navbar';
 import data from '@/lib/data.json';
 import { formatDistanceToNow, format } from 'date-fns';
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const quickActions = [
     { icon: Heart, label: "Health", href: "#" },
@@ -82,22 +83,23 @@ export default function DashboardPage() {
                 <CarouselContent>
                     {newsItems.map((item, index) => (
                         <CarouselItem key={index} className="basis-2/3">
-                            <Card className="overflow-hidden rounded-xl">
-                                <CardContent className="p-0">
-                                    <Image src={item.image} alt={item.title} width={300} height={150} className="w-full h-28 object-cover" data-ai-hint={item.imageHint} />
-                                    <div className="p-3">
-                                        <div className="flex justify-between items-start">
-                                            <h4 className="font-semibold text-xs leading-snug flex-1 pr-2">
-                                                <span className="line-clamp-3">
-                                                    {item.title}{' '}
-                                                    <a href="#" className="text-primary hover:underline">Read more</a>
-                                                </span>
-                                            </h4>
-                                            <p className="text-xs text-muted-foreground whitespace-nowrap">{formatDistanceToNow(new Date(item.date), { addSuffix: true })}</p>
+                           <Link href={`/news/${item.id}`}>
+                                <Card className="overflow-hidden rounded-xl cursor-pointer hover:shadow-md transition-shadow">
+                                    <CardContent className="p-0">
+                                        <Image src={item.image} alt={item.title} width={300} height={150} className="w-full h-28 object-cover" data-ai-hint={item.imageHint} />
+                                        <div className="p-3">
+                                            <div className="flex justify-between items-start">
+                                                <h4 className="font-semibold text-xs leading-snug flex-1 pr-2">
+                                                    <span className="line-clamp-3">
+                                                        {item.title}
+                                                    </span>
+                                                </h4>
+                                                <p className="text-xs text-muted-foreground whitespace-nowrap">{formatDistanceToNow(new Date(item.date), { addSuffix: true })}</p>
+                                            </div>
                                         </div>
-                                    </div>
-                                </CardContent>
-                            </Card>
+                                    </CardContent>
+                                </Card>
+                            </Link>
                         </CarouselItem>
                     ))}
                 </CarouselContent>

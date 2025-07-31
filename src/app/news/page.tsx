@@ -11,6 +11,7 @@ import Header from '@/components/layout/Header';
 import Navbar from '@/components/layout/Navbar';
 import data from '@/lib/data.json';
 import { formatDistanceToNow } from "date-fns";
+import { useRouter } from "next/navigation";
 
 const announcements = data.news.map(item => ({
     ...item,
@@ -23,6 +24,7 @@ const newsItems = data.news.map(item => ({
 }));
 
 export default function NewsPage() {
+  const router = useRouter();
   return (
     <div className="flex flex-col h-full bg-background">
       <Header title="News and Events" />
@@ -39,7 +41,7 @@ export default function NewsPage() {
                 <CarouselContent>
                     {announcements.map((item, index) => (
                         <CarouselItem key={index} className="basis-3/4">
-                            <Card className="overflow-hidden relative text-white">
+                            <Card className="overflow-hidden relative text-white cursor-pointer" onClick={() => router.push(`/news/${item.id}`)}>
                                 <Image src={item.image} alt={item.title} width={300} height={300} className="w-full h-40 object-cover" data-ai-hint={item.imageHint} />
                                 <div className="absolute inset-0 bg-black/50 p-4 flex flex-col justify-end">
                                     <h4 className="font-semibold text-sm leading-snug">{item.title}</h4>
@@ -61,7 +63,7 @@ export default function NewsPage() {
           </TabsList>
           <TabsContent value="all" className="space-y-4">
              {newsItems.map((item, index) => (
-                <Card key={index} className="overflow-hidden" onClick={() => {}}>
+                <Card key={index} className="overflow-hidden cursor-pointer hover:bg-muted/50" onClick={() => router.push(`/news/${item.id}`)}>
                     <CardContent className="p-0 flex">
                         <div className="w-1/3">
                             <Image src={item.image} alt={item.title} width={150} height={150} className="w-full h-full object-cover" data-ai-hint={item.imageHint} />
@@ -85,4 +87,3 @@ export default function NewsPage() {
     </div>
   );
 }
-
