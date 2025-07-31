@@ -7,7 +7,7 @@ import Image from 'next/image';
 import { useRouter } from "next/navigation";
 
 interface NavbarProps {
-    activePage: 'home' | 'news' | 'services' | 'account';
+    activePage: 'home' | 'news' | 'services' | 'account' | 'ai';
 }
 
 export default function Navbar({ activePage }: NavbarProps) {
@@ -56,7 +56,11 @@ export default function Navbar({ activePage }: NavbarProps) {
                 })}
             </div>
             <div className="absolute -top-8 left-1/2 -translate-x-1/2">
-                <Button size="icon" className="bg-primary hover:bg-primary/90 rounded-full w-16 h-16 shadow-lg">
+                <Button 
+                    size="icon" 
+                    className="bg-primary hover:bg-primary/90 rounded-full w-16 h-16 shadow-lg"
+                    onClick={() => router.push('/ai')}
+                >
                      <Image src="/images/icon_logowhite.png" alt="AI" width={40} height={40} />
                 </Button>
             </div>
