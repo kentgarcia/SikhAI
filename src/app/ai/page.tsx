@@ -5,9 +5,10 @@ import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
-import { ChevronLeft, Minus, Mic, ArrowUp, Cloudy, Calendar, ClipboardList, Hospital } from "lucide-react";
+import { ChevronLeft, Menu, Mic, ArrowUp, Cloudy, Calendar, ClipboardList, Hospital, MessageSquare, Search, X } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from 'next/navigation';
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger, SheetClose } from "@/components/ui/sheet";
 
 const suggestedPrompts = [
     { icon: Cloudy, text: "What's the weather and traffic like in Sta. Rosa today?" },
@@ -15,6 +16,24 @@ const suggestedPrompts = [
     { icon: ClipboardList, text: "What are the requirements for the city scholarship program?" },
     { icon: Hospital, text: "Is there a hospital nearby with available emergency services?" },
 ];
+
+const history = {
+    "Last Week": [
+        "Business Permit Renewal",
+        "Job Fair Schedule - July 2025",
+        "Scholarship Application Guide",
+        "Nearest Health Center - Real-time",
+        "Weather & Traffic Update - Sta. Rosa",
+    ],
+    "Older": [
+        "Real Property Tax Payment Online",
+        "Weekend Events in Sta. Rosa",
+        "Medical Appointment Booking Help",
+        "Barangay Clearance Requirements",
+        "Lost Document Reporting Steps",
+        "Lola Amour Concert Night",
+    ]
+}
 
 export default function AiChatPage() {
     const router = useRouter();
@@ -26,9 +45,44 @@ export default function AiChatPage() {
                     <ChevronLeft className="h-6 w-6" />
                 </Button>
                 <h1 className="text-lg font-semibold">Talk with Rosa</h1>
-                <Button variant="ghost" size="icon">
-                    <Minus className="h-6 w-6" />
-                </Button>
+                <Sheet>
+                    <SheetTrigger asChild>
+                        <Button variant="ghost" size="icon">
+                            <Menu className="h-6 w-6" />
+                        </Button>
+                    </SheetTrigger>
+                    <SheetContent className="w-full max-w-sm p-0">
+                        <SheetHeader className="p-4 border-b">
+                            <SheetTitle className="text-left">History</SheetTitle>
+                            <SheetClose className="absolute right-4 top-4">
+                                <X className="h-5 w-5" />
+                                <span className="sr-only">Close</span>
+                            </SheetClose>
+                        </SheetHeader>
+                        <div className="p-4 space-y-4">
+                            <Button className="w-full justify-start text-base font-normal">
+                                <MessageSquare className="mr-2" />
+                                New Conversation
+                            </Button>
+                            <div className="relative">
+                                <Input placeholder="Search Conversation" className="pl-10" />
+                                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                            </div>
+                        </div>
+                        <div className="p-4 space-y-4 text-sm">
+                            {Object.entries(history).map(([period, items]) => (
+                                <div key={period}>
+                                    <h3 className="font-semibold text-muted-foreground mb-2">{period}</h3>
+                                    <ul className="space-y-2">
+                                        {items.map((item, index) => (
+                                            <li key={index} className="cursor-pointer hover:text-primary">{item}</li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            ))}
+                        </div>
+                    </SheetContent>
+                </Sheet>
             </header>
 
             <main className="flex-1 flex flex-col items-center justify-center text-center p-4 overflow-y-auto no-scrollbar">
