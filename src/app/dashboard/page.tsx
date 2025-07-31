@@ -132,7 +132,7 @@ export default function DashboardPage() {
         <div>
             <div className="flex justify-between items-center mb-4">
                 <h3 className="text-lg font-semibold">Santa Rosa Events</h3>
-                <Button variant="link" className="text-primary">
+                 <Button variant="link" className="text-primary" onClick={() => router.push('/calendar')}>
                     <Calendar className="w-4 h-4 mr-2"/>
                     View calendar
                 </Button>
