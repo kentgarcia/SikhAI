@@ -11,6 +11,7 @@ import Header from '@/components/layout/Header';
 import Navbar from '@/components/layout/Navbar';
 import data from '@/lib/data.json';
 import { formatDistanceToNow, format } from 'date-fns';
+import { useRouter } from "next/navigation";
 
 const quickActions = [
     { icon: Heart, label: "Health", href: "#" },
@@ -44,6 +45,7 @@ const hourlyForecast = [
 ]
 
 export default function DashboardPage() {
+    const router = useRouter();
   return (
     <div className="flex flex-col h-full bg-background">
       <Header title="Dashboard" />
@@ -65,7 +67,7 @@ export default function DashboardPage() {
             <div className="relative z-10 w-1/2">
                 <h3 className="text-lg font-semibold text-gray-800">Good day, Juan!</h3>
                 <p className="text-xs text-gray-600 mt-2">I'm <span className="text-primary">Rosa</span>, your smart and caring companion from Sta. Rosa, ready to guide you trough your day!</p>
-                <Button variant="outline" className="mt-4 rounded-full border-primary text-primary bg-transparent hover:bg-primary/10 hover:text-primary">
+                <Button variant="outline" className="mt-4 rounded-full border-primary text-primary bg-transparent hover:bg-primary/10 hover:text-primary" onClick={() => router.push('/ai')}>
                     Start talking
                 </Button>
             </div>
