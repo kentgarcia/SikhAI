@@ -12,7 +12,7 @@ import Link from 'next/link';
 
 const quickActions = [
     { title: "RespondaHub", description: "Health, emergencies, and calamity support.", icon: Heart, bgColor: "#E6F0FF", color: "#0057A0", href: "/responda-hub" },
-    { title: "Community Wall", description: "Jobs, volunteering, and local reports.", icon: Users, bgColor: "#E8F5E9", color: "#4CAF50", href: "#" },
+    { title: "Community Wall", description: "Jobs, volunteering, and local reports.", icon: Users, bgColor: "#E8F5E9", color: "#4CAF50", href: "/community-wall" },
     { title: "EduConnect", description: "Scholarships, e-learning, and trainings.", icon: Lightbulb, bgColor: "#E0F7FA", color: "#009688", href: "#" },
     { title: "e-Gov Services", description: "Documents, permits, and other services.", icon: Building, bgColor: "#FDE7E7", color: "#A4040A", href: "#" },
 ]
