@@ -10,7 +10,7 @@ import Link from 'next/link';
 
 const menuItems = [
     { icon: Hospital, label: "Hospital & Clinic Locator", href: "/responda-hub/hospital-locator" },
-    { icon: CalendarPlus, label: "Book Appointment", href: "#" },
+    { icon: CalendarPlus, label: "Book Appointment", href: "/responda-hub/book-appointment" },
     { icon: Phone, label: "Emergency Dialer", href: "#" },
     { icon: AlertTriangle, label: "Calamity Impact Map", href: "#" },
 ];
