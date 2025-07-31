@@ -10,7 +10,7 @@ import Link from 'next/link';
 
 const menuItems = [
     { icon: Users, label: "Volunteer Drives", href: "/community-wall/volunteer-drives" },
-    { icon: ClipboardList, label: "Community Polls and Feedback", href: "#" },
+    { icon: ClipboardList, label: "Community Polls and Feedback", href: "/community-wall/polls-feedback" },
     { icon: Search, label: "Lost and Found Boards", href: "#" },
     { icon: Briefcase, label: "Local Jobs Opening", href: "#" },
 ];
