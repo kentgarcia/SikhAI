@@ -27,7 +27,12 @@ const newsItems = data.news.slice(0, 4).map(item => ({
 }));
 
 const eventItems = data.upcomingEvents.map(event => {
-    const eventDate = new Date(event.date);
+    // The date in data.json is "AUG 05, 2025", which is not a standard format.
+    // We'll parse it manually for format() to work correctly.
+    // A more robust solution would be to standardize date formats in the JSON.
+    const dateStr = event.date.replace(',', ''); // "AUG 05 2025"
+    const eventDate = new Date(dateStr);
+    
     return {
         ...event,
         day: format(eventDate, 'dd'),
@@ -35,6 +40,7 @@ const eventItems = data.upcomingEvents.map(event => {
         imageHint: event.title.toLowerCase().split(' ').slice(0,2).join(' ')
     };
 });
+
 
 const hourlyForecast = [
     { time: "4PM", icon: Cloudy, temp: "30°C", condition: "Mostly Cloudy" },
@@ -135,21 +141,23 @@ export default function DashboardPage() {
                 <CarouselContent>
                     {eventItems.map((item, index) => (
                         <CarouselItem key={index} className="basis-4/5">
-                            <Card className="overflow-hidden rounded-xl">
-                                <CardContent className="p-0">
-                                    <Image src={item.image} alt={item.title} width={300} height={150} className="w-full h-32 object-cover" data-ai-hint={item.imageHint} />
-                                    <div className="p-4 flex items-center gap-4">
-                                        <div className="text-center">
-                                            <p className="text-xl font-bold">{item.day}</p>
-                                            <p className="text-sm text-muted-foreground">{item.month}</p>
+                            <Link href={`/events/${item.id}`}>
+                                <Card className="overflow-hidden rounded-xl cursor-pointer hover:shadow-md transition-shadow">
+                                    <CardContent className="p-0">
+                                        <Image src={item.image} alt={item.title} width={300} height={150} className="w-full h-32 object-cover" data-ai-hint={item.imageHint} />
+                                        <div className="p-4 flex items-center gap-4">
+                                            <div className="text-center">
+                                                <p className="text-xl font-bold">{item.day}</p>
+                                                <p className="text-sm text-muted-foreground">{item.month}</p>
+                                            </div>
+                                            <div>
+                                                <h4 className="font-semibold text-sm">{item.title}</h4>
+                                                <p className="text-xs text-muted-foreground">{item.description}</p>
+                                            </div>
                                         </div>
-                                        <div>
-                                            <h4 className="font-semibold text-sm">{item.title}</h4>
-                                            <p className="text-xs text-muted-foreground">{item.description}</p>
-                                        </div>
-                                    </div>
-                                </CardContent>
-                            </Card>
+                                    </CardContent>
+                                </Card>
+                            </Link>
                         </CarouselItem>
                     ))}
                 </CarouselContent>
