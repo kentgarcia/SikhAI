@@ -12,7 +12,7 @@ const menuItems = [
     { icon: Users, label: "Volunteer Drives", href: "/community-wall/volunteer-drives" },
     { icon: ClipboardList, label: "Community Polls and Feedback", href: "/community-wall/polls-feedback" },
     { icon: Search, label: "Lost and Found Boards", href: "/community-wall/lost-and-found" },
-    { icon: Briefcase, label: "Local Jobs Opening", href: "#" },
+    { icon: Briefcase, label: "Local Jobs Opening", href: "/community-wall/local-jobs" },
 ];
 
 export default function CommunityWallPage() {
