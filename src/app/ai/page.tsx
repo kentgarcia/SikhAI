@@ -54,14 +54,14 @@ export default function AiChatPage() {
                     <SheetContent className="w-full max-w-sm p-0">
                         <SheetHeader className="p-4 border-b">
                             <SheetTitle className="text-left">History</SheetTitle>
-                            <SheetClose className="absolute right-4 top-4">
-                                <X className="h-5 w-5" />
+                            <SheetClose className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-secondary">
+                                <X className="h-4 w-4" />
                                 <span className="sr-only">Close</span>
                             </SheetClose>
                         </SheetHeader>
                         <div className="p-4 space-y-4">
                             <Button className="w-full justify-start text-base font-normal">
-                                <MessageSquare className="mr-2" />
+                                <MessageSquare className="mr-2 h-4 w-4" />
                                 New Conversation
                             </Button>
                             <div className="relative">
@@ -75,7 +75,7 @@ export default function AiChatPage() {
                                     <h3 className="font-semibold text-muted-foreground mb-2">{period}</h3>
                                     <ul className="space-y-2">
                                         {items.map((item, index) => (
-                                            <li key={index} className="cursor-pointer hover:text-primary">{item}</li>
+                                            <li key={index} className="cursor-pointer hover:text-primary truncate">{item}</li>
                                         ))}
                                     </ul>
                                 </div>
