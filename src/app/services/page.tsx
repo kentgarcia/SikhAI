@@ -83,8 +83,10 @@ export default function ServicesPage() {
         </div>
 
         <div 
-            className="relative rounded-lg p-4 overflow-hidden bg-gradient-to-b from-white to-gray-100"
+            className="relative rounded-lg p-4 overflow-hidden bg-cover bg-center"
+            style={{ backgroundImage: "url('/images/mapbg.jpg')" }}
         >
+            <div className="absolute inset-0 bg-gradient-to-t from-white via-white/80 to-white/50"></div>
             <div className="relative z-10">
                 <div className="flex justify-between items-center mb-4">
                     <h2 className="text-lg font-semibold text-gray-800 flex items-center gap-2">
@@ -94,7 +96,7 @@ export default function ServicesPage() {
                 </div>
                 <div className="space-y-3">
                     {queueItems.map((item, index) => (
-                         <Card key={index} className="bg-white/90 backdrop-blur-sm">
+                         <Card key={index} className="bg-white/80 backdrop-blur-sm">
                             <CardContent className="p-3 flex items-center">
                                 <div className="flex-1 space-y-1">
                                     <div className="flex items-center gap-2">
