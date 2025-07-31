@@ -6,14 +6,15 @@ import Navbar from '@/components/layout/Navbar';
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
-import { Heart, Users, Lightbulb, Building, MapPin, ChevronRight, MessageSquareQuote, BookOpen, ArrowRight, Clock, ArrowRightCircle } from "lucide-react";
+import { Heart, Users, Lightbulb, Building, MapPin, Clock, ArrowRightCircle, ArrowRight } from "lucide-react";
 import Image from 'next/image';
+import Link from 'next/link';
 
 const quickActions = [
-    { title: "RespondaHub", description: "Health, emergencies, and calamity support.", icon: Heart, bgColor: "#E6F0FF", color: "#0057A0" },
-    { title: "Community Wall", description: "Jobs, volunteering, and local reports.", icon: Users, bgColor: "#E8F5E9", color: "#4CAF50" },
-    { title: "EduConnect", description: "Scholarships, e-learning, and trainings.", icon: Lightbulb, bgColor: "#E0F7FA", color: "#009688" },
-    { title: "e-Gov Services", description: "Documents, permits, and other services.", icon: Building, bgColor: "#FDE7E7", color: "#A4040A" },
+    { title: "RespondaHub", description: "Health, emergencies, and calamity support.", icon: Heart, bgColor: "#E6F0FF", color: "#0057A0", href: "/responda-hub" },
+    { title: "Community Wall", description: "Jobs, volunteering, and local reports.", icon: Users, bgColor: "#E8F5E9", color: "#4CAF50", href: "#" },
+    { title: "EduConnect", description: "Scholarships, e-learning, and trainings.", icon: Lightbulb, bgColor: "#E0F7FA", color: "#009688", href: "#" },
+    { title: "e-Gov Services", description: "Documents, permits, and other services.", icon: Building, bgColor: "#FDE7E7", color: "#A4040A", href: "#" },
 ]
 
 const queueItems = [
@@ -34,15 +35,17 @@ export default function ServicesPage() {
                 {quickActions.map((item) => {
                     const Icon = item.icon;
                     return (
-                        <Card key={item.title} className="overflow-hidden">
-                           <CardContent className="p-4">
-                                <div className="w-10 h-10 rounded-lg flex items-center justify-center mb-3" style={{ backgroundColor: item.bgColor }}>
-                                    <Icon className="w-6 h-6" style={{ color: item.color }} />
-                                </div>
-                                <h3 className="font-semibold text-sm text-gray-800">{item.title}</h3>
-                                <p className="text-xs text-muted-foreground leading-tight">{item.description}</p>
-                           </CardContent>
-                        </Card>
+                        <Link href={item.href} key={item.title}>
+                            <Card className="overflow-hidden h-full hover:bg-muted/50 cursor-pointer">
+                               <CardContent className="p-4">
+                                    <div className="w-10 h-10 rounded-lg flex items-center justify-center mb-3" style={{ backgroundColor: item.bgColor }}>
+                                        <Icon className="w-6 h-6" style={{ color: item.color }} />
+                                    </div>
+                                    <h3 className="font-semibold text-sm text-gray-800">{item.title}</h3>
+                                    <p className="text-xs text-muted-foreground leading-tight">{item.description}</p>
+                               </CardContent>
+                            </Card>
+                        </Link>
                     )
                 })}
             </div>
