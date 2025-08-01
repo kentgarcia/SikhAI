@@ -93,7 +93,7 @@ const SkillsTrainingPage: React.FC = () => {
     );
 
     return (
-        <div className="min-h-screen bg-gray-100 flex flex-col">
+        <div className="min-h-screen bg-white flex flex-col">
             <div className="flex items-center p-4 bg-white shadow-md">
                 <ChevronLeft className="h-6 w-6 cursor-pointer" onClick={handleBackClick} />
                 <h1 className="text-xl font-semibold ml-4">Skills Training Events</h1>

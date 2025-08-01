@@ -8,12 +8,27 @@ import Image from 'next/image';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Button } from '@/components/ui/button';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from '@/components/ui/dialog'; // Import Dialog components
+
+interface Scholarship {
+  id: number;
+  logo: string;
+  title: string;
+  status: string;
+  targetLevel: string;
+  deadline: string;
+  educationLevel: string;
+  scholarshipType: string;
+  description: string;
+}
 
 const ScholarshipApplicationPage: React.FC = () => {
     const router = useRouter();
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedEducationLevel, setSelectedEducationLevel] = useState('all'); // Initial state to 'all'
     const [selectedScholarshipType, setSelectedScholarshipType] = useState('all'); // Initial state to 'all'
+    const [isDetailsModalOpen, setIsDetailsModalOpen] = useState(false);
+    const [selectedScholarship, setSelectedScholarship] = useState<Scholarship | null>(null); // State to hold selected scholarship for modal
 
     const handleBackClick = () => {
         router.back();
@@ -31,7 +46,17 @@ const ScholarshipApplicationPage: React.FC = () => {
         setSelectedScholarshipType(value);
     };
 
-    const scholarships = [
+    const handleDetailsClick = (scholarship: Scholarship) => { // Function to handle Details button click
+        setSelectedScholarship(scholarship);
+        setIsDetailsModalOpen(true);
+    };
+
+    const handleCloseDetailsModal = () => {
+        setIsDetailsModalOpen(false);
+        setSelectedScholarship(null);
+    };
+
+    const scholarships: Scholarship[] = [
         {
             id: 1,
             logo: '/images/scholarship/image.png', // Replace with actual path
@@ -41,6 +66,8 @@ const ScholarshipApplicationPage: React.FC = () => {
             deadline: 'Aug 15, 2025',
             educationLevel: 'college', // Added education level for filtering
             scholarshipType: 'academic', // Added scholarship type for filtering
+            description: `This program provides financial assistance to deserving students residing in the city.
+Eligibility criteria include academic performance and financial need.` // Added description
         },
         {
             id: 2,
@@ -51,6 +78,8 @@ const ScholarshipApplicationPage: React.FC = () => {
             deadline: 'Aug 15, 2025',
             educationLevel: 'highschool', // Added education level for filtering
             scholarshipType: 'academic', // Added scholarship type for filtering
+            description: `The Rotary Club offers scholarships to support students pursuing higher education.
+Focus areas include community involvement and leadership potential.` // Added description
         },
         {
             id: 3,
@@ -61,6 +90,8 @@ const ScholarshipApplicationPage: React.FC = () => {
             deadline: 'Aug 15, 2025',
             educationLevel: 'college', // Added education level for filtering
             scholarshipType: 'academic', // Added scholarship type for filtering
+            description: `This benefit is available to low-income students in Santa Rosa enrolled in public or private schools.
+It aims to reduce the financial burden of tuition fees.` // Added description
         },
          {
             id: 4,
@@ -71,6 +102,8 @@ const ScholarshipApplicationPage: React.FC = () => {
             deadline: 'Sept 1, 2024',
             educationLevel: 'highschool', // Added education level for filtering
             scholarshipType: 'arts', // Added scholarship type for filtering
+            description: `A scholarship dedicated to supporting talented students in the arts.
+Applicants should demonstrate exceptional skills in their chosen artistic field.` // Added description
         },
          {
             id: 5,
@@ -81,6 +114,8 @@ const ScholarshipApplicationPage: React.FC = () => {
             deadline: 'July 30, 2024',
             educationLevel: 'college', // Added education level for filtering
             scholarshipType: 'academic', // Added scholarship type for filtering
+            description: `This scholarship provides financial aid to college students.
+Criteria include academic merit and financial need.` // Added description
         },
     ];
 
@@ -103,7 +138,7 @@ const ScholarshipApplicationPage: React.FC = () => {
 
 
     return (
-        <div className="min-h-screen bg-gray-100 flex flex-col">
+        <div className="min-h-screen bg-white flex flex-col">
             <div className="flex items-center p-4 bg-white shadow-md">
                 <ChevronLeft className="h-6 w-6 cursor-pointer" onClick={handleBackClick} />
                 <h1 className="text-xl font-semibold ml-4">Scholarship Application</h1>
@@ -148,7 +183,7 @@ const ScholarshipApplicationPage: React.FC = () => {
 
                 <div className="space-y-4">
                     {filteredScholarships.map((scholarship) => (
-                        <Card key={scholarship.id} className="hover:bg-gray-50 cursor-pointer transition-colors duration-200"> {/* Added hover effect */}
+                        <Card key={scholarship.id} className="hover:bg-gray-50 cursor-pointer transition-colors duration-200">
                             <CardContent className="flex items-center p-4">
                                 <div className="flex-shrink-0 mr-4">
                                     <Image src={scholarship.logo} alt={scholarship.title} width={50} height={50} className="rounded-full" />
@@ -162,8 +197,8 @@ const ScholarshipApplicationPage: React.FC = () => {
                                     <p className="text-sm text-gray-600">Deadline: {scholarship.deadline}</p>
                                 </div>
                                 <div className="flex flex-col items-center space-y-2">
-                                    <Button variant="outline" size="sm" className="bg-green-500 text-white hover:bg-green-600">Apply Now</Button> {/* Added green background and hover effect */}
-                                    <Button variant="link" size="sm">Details</Button>
+                                    <Button variant="outline" size="sm" className="bg-green-500 text-white hover:bg-green-600">Apply Now</Button>
+                                    <Button variant="link" size="sm" onClick={() => handleDetailsClick(scholarship)}>Details</Button>
                                 </div>
                             </CardContent>
                         </Card>
@@ -173,6 +208,29 @@ const ScholarshipApplicationPage: React.FC = () => {
                     )}
                 </div>
             </main>
+
+            {/* Scholarship Details Modal */}
+            <Dialog open={isDetailsModalOpen} onOpenChange={setIsDetailsModalOpen}>
+                <DialogContent>
+                    <DialogHeader>
+                        <DialogTitle>{selectedScholarship?.title}</DialogTitle>
+                         <DialogDescription>{selectedScholarship?.targetLevel}</DialogDescription>
+                    </DialogHeader>
+                    <div className="py-4">
+                        {/* Display other details as needed */}
+                        <p><strong>Status:</strong> {selectedScholarship?.status}</p>
+                        <p><strong>Deadline:</strong> {selectedScholarship?.deadline}</p>
+                        <p><strong>Education Level:</strong> {selectedScholarship?.educationLevel}</p>
+                         <p><strong>Scholarship Type:</strong> {selectedScholarship?.scholarshipType}</p>
+                         {selectedScholarship?.description && <p><strong>Description:</strong> {selectedScholarship.description}</p>}
+
+                        {/* Add more details from your scholarship object here */}
+                    </div>
+                    <DialogFooter>
+                        <Button onClick={handleCloseDetailsModal}>Close</Button>
+                    </DialogFooter>
+                </DialogContent>
+            </Dialog>
 
             {/* Assuming a Navbar component exists */}
             {/* <Navbar activePage="services" /> */}

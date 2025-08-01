@@ -20,7 +20,7 @@ const EduConnectPage: React.FC = () => {
     ];
 
     return (
-        <div className="min-h-screen bg-gray-100 flex flex-col">
+        <div className="min-h-screen bg-white flex flex-col">
             <div className="flex items-center p-4 bg-white shadow-md">
                 <ChevronLeft className="h-6 w-6 cursor-pointer" onClick={handleBackClick} />
                 <h1 className="text-xl font-semibold ml-4">EduConnect</h1>
@@ -33,8 +33,8 @@ const EduConnectPage: React.FC = () => {
                         <Link href={service.href} key={index}> {/* Wrapped Card with Link */}
                             <Card className="flex items-center justify-between p-4 hover:bg-gray-50 cursor-pointer">
                                 <div className="flex items-center space-x-4">
-                                    <div className="p-2 rounded-full bg-blue-100">
-                                         <service.icon className="h-6 w-6 text-blue-600" />
+                                    <div className="p-2 rounded-full bg-red-100">
+                                         <service.icon className="h-6 w-6 text-red-600" />
                                     </div>
                                     <CardContent className="p-0 text-lg font-medium">
                                         {service.title}
