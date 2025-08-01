@@ -9,8 +9,9 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: 'New App',
-  description: 'A new app built in Firebase Studio',
+  title: 'SikhAI',
+  description: 'Your one-stop app for real-time updates, local events, and public services in Sta. Rosa',
+  manifest: '/manifest.json',
 };
 
 export default function RootLayout({
@@ -20,6 +21,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <meta name="theme-color" content="#A4040A" />
+      </head>
       <body className={`${poppins.className} bg-muted/40`}>
         <main className="mx-auto max-w-sm h-screen bg-background shadow-lg overflow-y-auto no-scrollbar">
           {children}

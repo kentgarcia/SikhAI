@@ -1,0 +1,22 @@
+{
+  "name": "SikhAI",
+  "short_name": "SikhAI",
+  "description": "Your one-stop app for real-time updates, local events, and public services in Sta. Rosa",
+  "icons": [
+    {
+      "src": "/images/icon_logo_192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/icon_logo_512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#A4040A",
+  "background_color": "#ffffff",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait"
+}
