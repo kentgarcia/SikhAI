@@ -83,13 +83,13 @@ export default function CalendarPage() {
                             mode="single"
                             selected={date}
                             onSelect={setDate}
-                            className="rounded-lg border"
+                            className="rounded-lg"
                             buttonVariant="ghost"
                             modifiers={{
                                 hasEvent: allEvents.map(event => event.dateObj)
                             }}
                              classNames={{
-                                root: 'w-full',
+                                root: 'w-full flex justify-center',
                                 day_selected: 'bg-primary text-white hover:bg-primary hover:text-white focus:bg-primary focus:text-white',
                                 day_today: 'bg-primary/20 text-primary-foreground',
                                 day_hidden: 'invisible',
