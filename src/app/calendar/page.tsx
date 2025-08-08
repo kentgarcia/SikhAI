@@ -78,18 +78,18 @@ export default function CalendarPage() {
             
             <main className="flex-grow flex flex-col overflow-y-auto no-scrollbar">
                 <div className="bg-gradient-to-b from-primary to-rose-200 p-4">
-                    <Card className="bg-white/90 backdrop-blur-sm rounded-xl shadow-lg">
+                     <Card className="bg-white/90 backdrop-blur-sm rounded-xl shadow-lg">
                         <ShadcnCalendar
                             mode="single"
                             selected={date}
                             onSelect={setDate}
-                            className="rounded-md p-0"
+                            className="rounded-lg border"
+                            buttonVariant="ghost"
                             modifiers={{
                                 hasEvent: allEvents.map(event => event.dateObj)
                             }}
                              classNames={{
                                 root: 'w-full',
-                                day: 'text-gray-800',
                                 day_selected: 'bg-primary text-white hover:bg-primary hover:text-white focus:bg-primary focus:text-white',
                                 day_today: 'bg-primary/20 text-primary-foreground',
                                 day_hidden: 'invisible',
@@ -99,10 +99,11 @@ export default function CalendarPage() {
                             components={{
                                 DayContent: ({ date, ...props }) => {
                                     const hasEvent = allEvents.some(event => isSameDay(event.dateObj, date));
+                                    const isSelected = date && props.selected && isSameDay(date, props.selected as Date)
                                     return (
-                                        <div className="relative">
+                                        <div className="relative w-full h-full flex items-center justify-center">
                                             {props.children}
-                                            {hasEvent && !isSameDay(date, new Date('2025-09-25')) && <div className="absolute bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-primary"></div>}
+                                            {hasEvent && !isSelected && <div className="absolute bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-primary"></div>}
                                         </div>
                                     )
                                 }

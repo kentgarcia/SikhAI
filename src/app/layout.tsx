@@ -25,7 +25,7 @@ export default function RootLayout({
         <meta name="theme-color" content="#A4040A" />
       </head>
       <body className={`${poppins.className} bg-muted/40`}>
-        <main className="mx-auto max-w-sm h-screen bg-background shadow-lg overflow-y-auto no-scrollbar">
+        <main className="mx-auto max-w-md h-screen bg-background shadow-lg overflow-y-auto no-scrollbar">
           {children}
         </main>
         <Toaster />
