@@ -21,14 +21,14 @@ export default function Navbar({ activePage }: NavbarProps) {
     ]
 
     return (
-        <nav className="relative border-t bg-background">
+        <nav className="relative border-t bg-background z-9999">
             <div className="mx-auto max-w-sm flex justify-around items-center h-16">
                 {navItems.slice(0, 2).map(item => {
                     const Icon = item.icon;
                     return (
-                        <Button 
+                        <Button
                             key={item.id}
-                            variant="ghost" 
+                            variant="ghost"
                             className={`flex flex-col h-auto items-center ${activePage === item.id ? 'text-primary' : 'text-muted-foreground'}`}
                             onClick={() => router.push(item.href)}
                         >
@@ -37,15 +37,15 @@ export default function Navbar({ activePage }: NavbarProps) {
                         </Button>
                     )
                 })}
-              
+
                 <div className="w-16"></div>
 
                 {navItems.slice(2, 4).map(item => {
                     const Icon = item.icon;
                     return (
-                        <Button 
+                        <Button
                             key={item.id}
-                            variant="ghost" 
+                            variant="ghost"
                             className={`flex flex-col h-auto items-center ${activePage === item.id ? 'text-primary' : 'text-muted-foreground'}`}
                             onClick={() => router.push(item.href)}
                         >
@@ -55,13 +55,13 @@ export default function Navbar({ activePage }: NavbarProps) {
                     )
                 })}
             </div>
-            <div className="absolute -top-8 left-1/2 -translate-x-1/2">
-                <Button 
-                    size="icon" 
+            <div className="absolute -top-8 left-1/2 -translate-x-1/2 z-9999">
+                <Button
+                    size="icon"
                     className="bg-primary hover:bg-primary/90 rounded-full w-16 h-16 shadow-lg"
                     onClick={() => router.push('/ai')}
                 >
-                     <Image src="/images/icon_logowhite.png" alt="AI" width={40} height={40} />
+                    <Image src="/images/icon_logowhite.png" alt="AI" width={40} height={40} />
                 </Button>
             </div>
         </nav>

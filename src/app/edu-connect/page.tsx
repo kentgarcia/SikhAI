@@ -2,9 +2,11 @@
 
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
-import { ChevronLeft, BookOpen, Globe, Calendar } from 'lucide-react'; // Added icons
+import { ChevronLeft, BookOpen, Globe, Calendar, ChevronRight } from 'lucide-react'; // Added icons
 import { useRouter } from 'next/navigation';
 import Link from 'next/link'; // Import Link
+import { Separator } from '@radix-ui/react-separator';
+import Navbar from '@/components/layout/Navbar';
 
 const EduConnectPage: React.FC = () => {
     const router = useRouter();
@@ -20,35 +22,33 @@ const EduConnectPage: React.FC = () => {
     ];
 
     return (
-        <div className="min-h-screen bg-white flex flex-col">
-            <div className="flex items-center p-4 bg-white shadow-md">
+        <div className="flex flex-col h-full bg-background">
+            <header className="flex items-center p-4 border-b">
                 <ChevronLeft className="h-6 w-6 cursor-pointer" onClick={handleBackClick} />
                 <h1 className="text-xl font-semibold ml-4">EduConnect</h1>
-            </div>
+            </header>
 
-            <main className="flex-grow p-4 flex flex-col items-center">
-                 <p className="text-gray-600 mb-6 text-center">Choose a EduConnect service</p>
-                <div className="w-full max-w-md space-y-3">
+            <main className="flex-grow p-4 overflow-y-auto">
+                <p className="text-muted-foreground mb-6">Choose an EduConnect service</p>
+                <Card className="p-2 rounded-2xl">
                     {services.map((service, index) => (
-                        <Link href={service.href} key={index}> {/* Wrapped Card with Link */}
-                            <Card className="flex items-center justify-between p-4 hover:bg-gray-50 cursor-pointer">
-                                <div className="flex items-center space-x-4">
-                                    <div className="p-2 rounded-full bg-red-100">
-                                         <service.icon className="h-6 w-6 text-red-600" />
+                        <Link href={service.href} key={service.title}>
+                            <div>
+                                <div className="flex items-center p-4 hover:bg-muted/50 rounded-lg cursor-pointer">
+                                    <div className="w-10 h-10 rounded-lg flex items-center justify-center bg-primary/10 mr-4">
+                                        <service.icon className="w-6 h-6 text-primary" />
                                     </div>
-                                    <CardContent className="p-0 text-lg font-medium">
-                                        {service.title}
-                                    </CardContent>
+                                    <span className="flex-grow font-medium text-gray-700">{service.title}</span>
+                                    <ChevronRight className="w-5 h-5 text-muted-foreground" />
                                 </div>
-                                <ChevronLeft className="h-5 w-5 text-gray-400 transform rotate-180" />
-                            </Card>
+                                {index < services.length - 1 && <Separator />}
+                            </div>
                         </Link>
                     ))}
-                </div>
+                </Card>
             </main>
 
-            {/* Assuming a Navbar component exists */}
-            {/* <Navbar activePage="services" /> */}
+            <Navbar activePage="services" />
         </div>
     );
 };

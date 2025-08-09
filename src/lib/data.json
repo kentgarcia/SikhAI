@@ -2,129 +2,129 @@
   "news": [
     {
       "id": "news-1",
-      "title": "Nutri-slogan & poster making contest",
+      "title": "City-Wide Nutri-Slogan and Poster Making Contest to Promote Healthy Living and Nutrition Awareness Among Residents",
       "image": "/images/events/event-1.jpg",
       "date": "2025-07-15",
       "category": "Community",
-      "description": "Join the city-wide Nutri-slogan and poster making contest to promote healthy living and nutrition awareness."
+      "description": "The city government invites everyone to participate in the Nutri-slogan and poster making contest, an initiative aimed at raising awareness about the importance of nutrition and healthy living. Participants from various schools and community groups are encouraged to showcase their creativity and commitment to a healthier lifestyle. Winning entries will be displayed in public spaces to inspire the community."
     },
     {
       "id": "news-2",
-      "title": "Public Advisory: All face-to-face classes at ALL levels are suspended",
+      "title": "Public Advisory: Suspension of All Face-to-Face Classes at Every Educational Level Due to Inclement Weather Conditions in Santa Rosa City",
       "image": "/images/events/event-2.png",
       "date": "2025-07-14",
       "category": "Education",
-      "description": "Due to inclement weather, all face-to-face classes in Santa Rosa City are suspended today. Stay safe."
+      "description": "In light of the recent heavy rainfall and potential flooding, the local government has announced the suspension of all face-to-face classes at every educational level in Santa Rosa City. Students, teachers, and parents are advised to stay indoors and monitor official channels for further updates. Online learning may continue as scheduled."
     },
     {
       "id": "news-3",
-      "title": "Nutriquiz contest",
+      "title": "Annual NutriQuiz Contest Challenges High School Students to Test Their Knowledge on Nutrition and Healthy Habits",
       "image": "/images/events/event-3.jpg",
       "date": "2025-07-12",
       "category": "Education",
-      "description": "Test your knowledge in the annual Nutriquiz contest. Open to all high school students in the city."
+      "description": "The annual NutriQuiz contest is back, inviting high school students from across the city to compete in a friendly battle of wits focused on nutrition, health, and wellness. The event aims to foster a deeper understanding of healthy habits and encourage lifelong learning about proper nutrition. Prizes await the top performers."
     },
     {
       "id": "news-4",
-      "title": "Crowning Moments: Victors of Rosas ng Santa Rosa 2025",
+      "title": "Crowning Moments and Highlights from the Victors of Rosas ng Santa Rosa 2025 Pageant Night",
       "image": "/images/events/event-4.png",
       "date": "2025-07-11",
       "category": "Events",
-      "description": "Relive the crowning moments of the Rosas ng Santa Rosa 2025 pageant and celebrate our new ambassadors."
+      "description": "Experience the excitement and glamour of the Rosas ng Santa Rosa 2025 pageant as we relive the crowning moments of our new city ambassadors. The event featured dazzling performances, inspiring stories, and a celebration of beauty, intelligence, and community service. Congratulations to all the winners and participants!"
     },
     {
       "id": "news-5",
-      "title": "Santa Rosa marks 21st cityhood with vibrant parade",
+      "title": "Santa Rosa City Marks Its 21st Cityhood Anniversary with a Vibrant Parade Showcasing Local Culture and Community Spirit",
       "image": "/images/events/event-5.jpg",
       "date": "2025-07-10",
       "category": "Events",
-      "description": "The city celebrated its 21st Cityhood Anniversary with a grand parade showcasing the local culture and community spirit."
+      "description": "Santa Rosa City celebrated its 21st Cityhood Anniversary with a grand parade that brought together local schools, organizations, and residents. The event highlighted the city’s rich cultural heritage, achievements, and the unity of its people. Colorful floats, lively performances, and community participation made the celebration truly memorable."
     },
     {
       "id": "news-6",
-      "title": "Gabay sa PWD ID Verification",
-      "image": "/images/events/event-6.jpg",
+      "title": "Comprehensive Guide to the Verification Process for Persons with Disabilities (PWD) ID in Santa Rosa City",
+      "image": "/images/events/event-6.png",
       "date": "2025-07-09",
       "category": "Community",
-      "description": "A step-by-step guide for the verification process of PWD IDs to ensure all persons with disabilities can avail their benefits."
+      "description": "This article provides a detailed, step-by-step guide for persons with disabilities (PWD) on how to verify their PWD IDs in Santa Rosa City. The process ensures that all eligible individuals can access government benefits and services. The guide includes required documents, verification locations, and contact information for assistance."
     },
     {
       "id": "news-7",
-      "title": "Libreng Anti-Rabies mass vaccination para sa buwan ng Hulyo 2025",
+      "title": "Free Anti-Rabies Mass Vaccination Drive for Pets in Santa Rosa City Throughout July 2025",
       "image": "/images/events/event-8.png",
       "date": "2025-07-08",
       "category": "Health",
-      "description": "The City Veterinary Office will conduct a free anti-rabies mass vaccination drive for the month of July. Protect your pets!"
+      "description": "The City Veterinary Office is conducting a free anti-rabies mass vaccination drive for all pet owners in Santa Rosa City this July. Residents are encouraged to bring their dogs and cats to designated vaccination sites to help prevent the spread of rabies and ensure the safety of the community."
     },
     {
       "id": "news-8",
-      "title": "Celebrating the 111th Anniversary of Iglesia ni Cristo",
+      "title": "Santa Rosa City Joins the 111th Anniversary Celebration of Iglesia ni Cristo, Honoring Its Community Contributions",
       "image": "/images/events/event-10.png",
       "date": "2025-07-27",
       "category": "Community",
-      "description": "The city joins the celebration of the 111th Anniversary of Iglesia ni Cristo, recognizing its contributions to the community."
+      "description": "Santa Rosa City proudly joins the 111th Anniversary celebration of Iglesia ni Cristo, recognizing the organization’s significant contributions to the local community. The event features special programs, outreach activities, and a look back at the church’s history and impact on the city’s development."
     },
     {
       "id": "news-9",
-      "title": "Grand Graduation of Pabasa sa Nutrisyon",
+      "title": "Grand Graduation Ceremony for the Pabasa sa Nutrisyon Program: Celebrating Milestones in Nutrition Education",
       "image": "/images/events/event-12.png",
       "date": "2025-07-25",
       "category": "Education",
-      "description": "Congratulations to all the graduates of the Pabasa sa Nutrisyon program! A milestone in promoting nutrition education."
+      "description": "Congratulations to all the graduates of the Pabasa sa Nutrisyon program! This milestone event celebrates the achievements of participants who have completed the nutrition education program, empowering families to make healthier food choices and improve their overall well-being."
     },
     {
       "id": "news-10",
-      "title": "Happy 21st Cityhood Anniversary, Santa Rosa",
-      "image": "/images/events/event-6.jpg",
+      "title": "Santa Rosa City Celebrates Its 21st Cityhood Anniversary: A Message of Unity and Progress for All Rosenians",
+      "image": "/images/events/event-6.png",
       "date": "2025-07-10",
       "category": "Events",
-      "description": "Warmest greetings to all Rosenians on our 21st Cityhood Anniversary! Let's continue to work together for a progressive city."
+      "description": "Warmest greetings to all Rosenians as we mark the 21st Cityhood Anniversary of Santa Rosa! This special occasion is a reminder of our shared journey toward progress and prosperity. Let us continue to work together to build a brighter future for our beloved city."
     }
   ],
   "upcomingEvents": [
     {
       "id": "event-1",
-      "title": "Nutri-slogan & poster making contest",
-      "image": "/images/events/event-6.jpg",
+      "title": "Nutri-Slogan and Poster Making Contest: Inspiring Creativity and Health Awareness in the Community",
+      "image": "/images/events/event-6.png",
       "date": "AUG 05, 2025",
-      "description": "Showcase your creativity in the Nutri-slogan and poster making contest. A great way to promote health awareness."
+      "description": "Unleash your artistic talents and join the Nutri-slogan and poster making contest! This event is open to all residents and aims to promote health awareness through creative expression. Winners will receive special prizes and have their works featured in community centers."
     },
     {
       "id": "event-2",
-      "title": "NutriTiktok drama dance",
+      "title": "NutriTiktok Drama Dance Competition: A Modern and Fun Way to Celebrate Nutrition Month",
       "image": "/images/events/event-9.jpg",
       "date": "AUG 12, 2025",
-      "description": "Join the fun and exciting NutriTiktok drama dance competition. A modern twist to celebrating nutrition month."
+      "description": "Get ready to dance and act in the NutriTiktok drama dance competition! Participants will create short, nutrition-themed performances to raise awareness about healthy eating. The most creative entries will be showcased on the city’s official social media pages."
     },
     {
       "id": "event-3",
-      "title": "51st Nutrition Month Celebration",
-      "image": "/images/events/event-6.jpg",
+      "title": "51st Nutrition Month Culminating Celebration: Family Activities, Games, and Health Education for All",
+      "image": "/images/events/event-6.png",
       "date": "JUL 31, 2025",
-      "description": "Join us for the culminating activity of the 51st Nutrition Month with various fun and educational activities for the whole family."
+      "description": "Join us for the grand culminating activity of the 51st Nutrition Month! Enjoy a day filled with fun games, educational booths, and family-friendly activities designed to promote healthy living. Don’t miss the awarding of contest winners and special guest performances."
     }
   ],
   "announcements": [
     {
       "id": "announcement-1",
-      "title": "City-wide Cleanup Drive this Weekend",
+      "title": "City-Wide Cleanup Drive Scheduled This Weekend: Let’s Work Together for a Cleaner and Greener Santa Rosa",
       "image": "https://placehold.co/600x400.png",
       "date": "2025-07-28",
-      "description": "Join the city-wide cleanup drive on Saturday to maintain the cleanliness of our community. Your participation is highly encouraged."
+      "description": "The city government is calling on all residents, organizations, and businesses to join the city-wide cleanup drive this Saturday. Let’s unite to keep our streets, parks, and public spaces clean and green. Volunteers will be provided with cleaning materials and refreshments. Your participation makes a difference!"
     },
     {
       "id": "announcement-2",
-      "title": "New Traffic Scheme Implementation",
+      "title": "Implementation of a New Traffic Scheme to Alleviate Congestion on Major Roads Starting August 2025",
       "image": "https://placehold.co/600x400.png",
       "date": "2025-08-01",
-      "description": "A new traffic scheme will be implemented starting next month to ease congestion on major roads. Please be guided accordingly."
+      "description": "To address increasing traffic congestion, the city will implement a new traffic scheme on major roads beginning next month. Motorists and commuters are advised to familiarize themselves with the new routes and traffic rules. Traffic enforcers will be deployed to assist during the transition period."
     },
     {
       "id": "announcement-3",
-      "title": "Business Permit Renewal Deadline",
+      "title": "Important Reminder: Deadline for Business Permit Renewal is Approaching Fast—Avoid Penalties by Renewing Early",
       "image": "https://placehold.co/600x400.png",
       "date": "2025-08-15",
-      "description": "The deadline for business permit renewal is fast approaching. Renew now to avoid penalties and continue your business operations smoothly."
+      "description": "Attention business owners: The deadline for business permit renewal is fast approaching. Please ensure that all requirements are submitted before the due date to avoid penalties and ensure uninterrupted business operations. For assistance, visit the Business Permits and Licensing Office."
     }
   ]
 }

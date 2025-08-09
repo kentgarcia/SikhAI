@@ -1,20 +1,24 @@
 
 "use client";
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
-import { ChevronLeft, Menu, Mic, ArrowUp, Cloudy, Calendar, ClipboardList, Hospital, MessageSquare, Search, X, Keyboard, Square } from "lucide-react";
+import { ChevronLeft, Menu, Mic, ArrowUp, Cloudy, Calendar, ClipboardList, Hospital, MessageSquare, Search, X, Loader2, Trash2 } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from 'next/navigation';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger, SheetClose } from "@/components/ui/sheet";
 
-const suggestedPrompts = [
+import { getAIResponse } from '@/ai/responses';
+import { intentComponentMap } from '@/components/ai/widgets';
+
+const baseSuggestedPrompts = [
     { icon: Cloudy, text: "What's the weather and traffic like in Sta. Rosa today?" },
     { icon: Calendar, text: "What's happening in Sta. Rosa this weekend?" },
     { icon: ClipboardList, text: "What are the requirements for the city scholarship program?" },
     { icon: Hospital, text: "Is there a hospital nearby with available emergency services?" },
+    { icon: Calendar, text: "Tell me something about Sta. Rosa's culture" },
 ];
 
 const history = {
@@ -35,9 +39,75 @@ const history = {
     ]
 }
 
+type ChatMessage = { id: string; role: 'user' | 'assistant'; content: string; intent?: string; data?: any };
+
 export default function AiChatPage() {
     const router = useRouter();
-    const [isVoiceMode, setIsVoiceMode] = useState(false);
+    const [messages, setMessages] = useState<ChatMessage[]>([]);
+    const [showPromptPalette, setShowPromptPalette] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [dynamicPrompts, setDynamicPrompts] = useState<string[]>(baseSuggestedPrompts.map(p => p.text));
+    const [typingMsgId, setTypingMsgId] = useState<string | null>(null);
+    const pendingWidgetRef = useRef<{ intent?: string; data?: any } | null>(null);
+    const scrollRef = useRef<HTMLDivElement | null>(null);
+
+    // Auto-scroll when messages change
+    useEffect(() => {
+        if (scrollRef.current) {
+            scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+        }
+    }, [messages]);
+
+    const genId = () => {
+        try {
+            if (typeof crypto !== 'undefined' && (crypto as any).randomUUID) {
+                return (crypto as any).randomUUID();
+            }
+        } catch { }
+        return 'id-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 10);
+    };
+
+    function handlePromptSelect(text: string) {
+        setShowPromptPalette(false);
+        const userMsg: ChatMessage = { id: genId(), role: 'user', content: text };
+        setMessages(prev => [...prev, userMsg]);
+        setLoading(true);
+        // Simulate async fetch
+        setTimeout(() => {
+            const ai = getAIResponse(text);
+            const fullContent = ai.answer;
+            const id = genId();
+            setTypingMsgId(id);
+            // Defer widget (intent/data) until finish typing
+            pendingWidgetRef.current = { intent: ai.intent, data: ai.data };
+            const assistantMsg: ChatMessage = { id, role: 'assistant', content: '' };
+            setMessages(prev => [...prev, assistantMsg]);
+            // Typing animation
+            let i = 0;
+            const interval = setInterval(() => {
+                i++;
+                setMessages(prev => prev.map(m => m.id === id ? { ...m, content: fullContent.slice(0, i) } : m));
+                if (i >= fullContent.length) {
+                    clearInterval(interval);
+                    setTypingMsgId(null);
+                    setLoading(false);
+                    // Attach widget to last message after typing completes
+                    const pw = pendingWidgetRef.current;
+                    if (pw?.intent) {
+                        setMessages(prev => prev.map(m => m.id === id ? { ...m, intent: pw.intent, data: pw.data } : m));
+                    }
+                    pendingWidgetRef.current = null;
+                    if (ai.nextPrompts && ai.nextPrompts.length) setDynamicPrompts(ai.nextPrompts);
+                    else setDynamicPrompts([]); // end state: hide suggestions
+                }
+            }, Math.min(35, Math.max(10, 600 / fullContent.length))); // speed scales with length
+        }, 400);
+    }
+
+    function startNewConversation() {
+        setMessages([]);
+        setDynamicPrompts(baseSuggestedPrompts.map(p => p.text));
+    }
 
     const textMode = (
         <div className="flex flex-col h-full bg-background">
@@ -61,9 +131,12 @@ export default function AiChatPage() {
                             </SheetClose>
                         </SheetHeader>
                         <div className="p-4 space-y-4">
-                            <Button className="w-full justify-start text-base font-normal">
+                            <Button className="w-full justify-start text-base font-normal" onClick={startNewConversation}>
                                 <MessageSquare className="mr-2 h-4 w-4" />
                                 New Conversation
+                            </Button>
+                            <Button variant="outline" className="w-full justify-start text-base font-normal" onClick={() => { setMessages([]); setDynamicPrompts(baseSuggestedPrompts.map(p => p.text)); }}>
+                                <Trash2 className="mr-2 h-4 w-4" /> Clear History
                             </Button>
                             <div className="relative">
                                 <Input placeholder="Search Conversation" className="pl-10" />
@@ -76,7 +149,11 @@ export default function AiChatPage() {
                                     <h3 className="font-semibold text-muted-foreground mb-2">{period}</h3>
                                     <ul className="space-y-2">
                                         {items.map((item, index) => (
-                                            <li key={index} className="cursor-pointer hover:text-primary truncate">{item}</li>
+                                            <li
+                                                key={index}
+                                                className="cursor-pointer hover:text-primary truncate"
+                                                onClick={() => handlePromptSelect(item)}
+                                            >{item}</li>
                                         ))}
                                     </ul>
                                 </div>
@@ -86,114 +163,114 @@ export default function AiChatPage() {
                 </Sheet>
             </header>
 
-            <main className="flex-1 flex flex-col items-center justify-center text-center p-4 overflow-y-auto no-scrollbar">
-                <div className="w-32 h-32 rounded-full flex items-center justify-center bg-primary/10 mb-4 animate-subtle-breathe">
-                    <Image
-                        src="/images/rosaWave.png"
-                        alt="Rosa AI"
-                        width={100}
-                        height={100}
-                        className="object-contain"
-                        data-ai-hint="robot waving"
-                    />
-                </div>
-                <h2 className="text-2xl font-bold mb-1">Hi! I'm Rosa</h2>
-                <p className="text-muted-foreground mb-8">Your friendly AI companion, how can I help you?</p>
-
-                <div className="w-full max-w-sm">
-                    <h3 className="text-sm font-semibold text-muted-foreground mb-4">Suggested Prompts</h3>
-                    <div className="grid grid-cols-2 gap-3">
-                        {suggestedPrompts.map((prompt, index) => {
-                            const Icon = prompt.icon;
-                            return (
-                                <Card key={index} className="p-3 text-left hover:bg-muted/50 cursor-pointer">
-                                    <Icon className="w-6 h-6 mb-2 text-primary/80" />
-                                    <p className="text-xs text-gray-700">{prompt.text}</p>
-                                </Card>
-                            );
-                        })}
+            {messages.length === 0 ? (
+                <main className="flex-1 flex flex-col items-center justify-center text-center p-4 overflow-y-auto no-scrollbar">
+                    <div className="w-32 h-32 rounded-full flex items-center justify-center bg-primary/10 mb-4 animate-subtle-breathe">
+                        <Image
+                            src="/images/rosaWave.png"
+                            alt="Rosa AI"
+                            width={100}
+                            height={100}
+                            className="object-contain"
+                            data-ai-hint="robot waving"
+                        />
                     </div>
-                </div>
-            </main>
+                    <h2 className="text-2xl font-bold mb-1">Hi! I'm Rosa</h2>
+                    <p className="text-muted-foreground mb-8">Your friendly AI companion, how can I help you?</p>
+
+                    <div className="w-full max-w-sm">
+                        <h3 className="text-sm font-semibold text-muted-foreground mb-4">Suggested Prompts</h3>
+                        <div className="grid grid-cols-2 gap-3">
+                            {baseSuggestedPrompts.map((prompt, index) => {
+                                const Icon = prompt.icon;
+                                return (
+                                    <Card key={index} className="p-3 text-left hover:bg-muted/50 cursor-pointer" onClick={() => handlePromptSelect(prompt.text)}>
+                                        <Icon className="w-6 h-6 mb-2 text-primary/80" />
+                                        <p className="text-xs text-gray-700">{prompt.text}</p>
+                                    </Card>
+                                );
+                            })}
+                        </div>
+                    </div>
+                </main>
+            ) : (
+                <main ref={scrollRef} className="flex-1 flex flex-col p-4 gap-4 overflow-y-auto no-scrollbar">
+                    {messages.map(m => {
+                        const Widget = m.intent ? (intentComponentMap as any)[m.intent] : undefined;
+                        return (
+                            <div key={m.id} className={`flex flex-col ${m.role === 'user' ? 'items-end' : 'items-start'}`}>
+                                <div className={`max-w-[80%] rounded-2xl px-4 py-3 text-sm shadow-sm ${m.role === 'user' ? 'bg-primary text-primary-foreground rounded-br-sm' : 'bg-muted rounded-bl-sm'}`}>
+                                    {m.content}
+                                </div>
+                                {Widget && (
+                                    <div className="max-w-[80%] w-full">
+                                        <Widget data={m.data} onAction={(payload: any) => {
+                                            // Convert action into a banner assistant message
+                                            const bannerMsg: ChatMessage = { id: genId(), role: 'assistant', content: payload.title, intent: 'banner', data: { title: payload.title, description: payload.description, variant: payload.variant || 'info' } };
+                                            setMessages(prev => [...prev, bannerMsg]);
+                                        }} />
+                                    </div>
+                                )}
+                            </div>
+                        );
+                    })}
+                    {loading && (
+                        <div className="flex justify-start">
+                            <div className="flex items-center gap-2 bg-muted rounded-2xl px-4 py-3 text-sm">
+                                <Loader2 className="h-4 w-4 animate-spin" />
+                                Thinking...
+                            </div>
+                        </div>
+                    )}
+                    {!loading && dynamicPrompts.length > 0 && !typingMsgId && (
+                        <div className="mt-2 flex flex-wrap gap-2">
+                            {dynamicPrompts.map((p, i) => (
+                                <button
+                                    key={i}
+                                    onClick={() => handlePromptSelect(p)}
+                                    className="text-xs px-3 py-1 rounded-full bg-secondary hover:bg-secondary/80 transition-colors"
+                                >{p}</button>
+                            ))}
+                        </div>
+                    )}
+                </main>
+            )}
 
             <footer className="p-4 flex-shrink-0 bg-background border-t">
                 <div className="relative">
-                    <Input placeholder="Ask Rosa anything..." className="pr-24 rounded-full h-12 text-base" />
+                    {/* Input replaced with a button that reveals prompt palette */}
+                    <button
+                        className="w-full text-left pr-24 rounded-full h-12 text-base bg-muted/50 hover:bg-muted px-5 transition"
+                        onClick={() => setShowPromptPalette(prev => !prev)}
+                    >
+                        {showPromptPalette ? 'Hide prompt suggestions' : 'Tap to choose or type a prompt...'}
+                    </button>
                     <div className="absolute inset-y-0 right-2 flex items-center space-x-1">
-                        <Button variant="ghost" size="icon" className="rounded-full" onClick={() => setIsVoiceMode(true)}>
+                        <Button variant="ghost" size="icon" className="rounded-full" onClick={() => router.push('/ai/voice')}>
                             <Mic className="w-5 h-5 text-muted-foreground" />
                         </Button>
-                         <Button size="icon" className="rounded-full w-9 h-9 bg-muted hover:bg-muted/80">
+                        <Button size="icon" className="rounded-full w-9 h-9 bg-muted hover:bg-muted/80" disabled>
                             <ArrowUp className="w-5 h-5 text-muted-foreground" />
                         </Button>
                     </div>
                 </div>
-            </footer>
-        </div>
-    );
-
-    const voiceMode = (
-        <div className="flex flex-col h-full bg-background">
-             <header className="flex items-center justify-between p-4 flex-shrink-0">
-                <Button variant="ghost" size="icon" onClick={() => router.back()}>
-                    <ChevronLeft className="h-6 w-6" />
-                </Button>
-                <h1 className="text-lg font-semibold">Talk with Rosa</h1>
-                <Sheet>
-                    <SheetTrigger asChild>
-                        <Button variant="ghost" size="icon">
-                            <Menu className="h-6 w-6" />
-                        </Button>
-                    </SheetTrigger>
-                     <SheetContent className="w-full max-w-sm p-0">
-                        <SheetHeader className="p-4 border-b">
-                            <SheetTitle className="text-left">History</SheetTitle>
-                            <SheetClose className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-secondary">
-                                <X className="h-4 w-4" />
-                                <span className="sr-only">Close</span>
-                            </SheetClose>
-                        </SheetHeader>
-                     </SheetContent>
-                </Sheet>
-            </header>
-
-            <main className="flex-1 flex flex-col items-center justify-center text-center p-4 overflow-y-auto no-scrollbar">
-                 <div className="w-56 h-56 rounded-full flex items-center justify-center bg-amber-100 mb-8">
-                    <Image
-                        src="/images/onboarding2.png"
-                        alt="Rosa AI"
-                        width={200}
-                        height={200}
-                        className="object-contain"
-                        data-ai-hint="lion mascot"
-                    />
-                </div>
-                <div className="relative w-full max-w-sm h-24">
-                    <p className="text-2xl font-medium text-center">
-                        Could you help me find a nearby hospital that offers <span className="text-muted-foreground">emergency services?</span>
-                    </p>
-                    <div className="absolute -bottom-4 right-10 flex items-center gap-1">
-                        <div className="w-4 h-4 rounded-full bg-amber-200"></div>
-                        <div className="w-2 h-2 rounded-full bg-amber-200"></div>
+                {showPromptPalette && (
+                    <div className="mt-4 p-3 rounded-xl border bg-background/70 backdrop-blur-sm">
+                        <h4 className="text-xs font-semibold text-muted-foreground mb-2">Quick Prompts</h4>
+                        <div className="flex flex-wrap gap-2">
+                            {baseSuggestedPrompts.map((p, idx) => (
+                                <button
+                                    key={idx}
+                                    onClick={() => handlePromptSelect(p.text)}
+                                    className="text-xs px-3 py-2 rounded-lg bg-muted hover:bg-muted/70 whitespace-pre-line text-left"
+                                >{p.text}</button>
+                            ))}
+                        </div>
                     </div>
-                </div>
-            </main>
-
-            <footer className="p-4 flex-shrink-0 bg-background">
-                <div className="flex justify-center items-center gap-4">
-                     <Button variant="outline" size="icon" className="rounded-full w-14 h-14 bg-amber-100 border-amber-200" onClick={() => setIsVoiceMode(false)}>
-                        <Keyboard className="w-7 h-7 text-muted-foreground" />
-                    </Button>
-                     <Button size="icon" className="rounded-full w-20 h-20 bg-amber-300 hover:bg-amber-400 shadow-lg">
-                        <Mic className="w-10 h-10 text-black" />
-                    </Button>
-                    <Button variant="outline" size="icon" className="rounded-full w-14 h-14 bg-amber-100 border-amber-200" onClick={() => setIsVoiceMode(false)}>
-                        <Square className="w-7 h-7 text-muted-foreground" />
-                    </Button>
-                </div>
+                )}
             </footer>
         </div>
     );
 
-    return isVoiceMode ? voiceMode : textMode;
+    return textMode;
 }

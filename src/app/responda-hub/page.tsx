@@ -7,6 +7,7 @@ import { Separator } from "@/components/ui/separator";
 import { ChevronLeft, ChevronRight, Hospital, CalendarPlus, Phone, AlertTriangle } from "lucide-react";
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import Navbar from '@/components/layout/Navbar';
 
 const menuItems = [
     { icon: Hospital, label: "Hospital & Clinic Locator", href: "/responda-hub/hospital-locator" },
@@ -26,7 +27,7 @@ export default function RespondaHubPage() {
                 </Button>
                 <h1 className="text-xl font-semibold ml-4">RespondaHub</h1>
             </header>
-            
+
             <main className="flex-grow p-4 overflow-y-auto">
                 <p className="text-muted-foreground mb-6">Access health, emergencies, and calamity support services.</p>
                 <Card className="p-2 rounded-2xl">
@@ -46,6 +47,9 @@ export default function RespondaHubPage() {
                     ))}
                 </Card>
             </main>
+
+            <Navbar activePage="services" />
+
         </div>
     );
 }

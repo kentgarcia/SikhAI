@@ -44,7 +44,7 @@ const allEvents = [
         time: "9:00 - 12:00",
         location: "Gabaldon, Central, City of Santa Rosa, Laguna"
     },
-     {
+    {
         id: "event-6",
         title: "Nutri TikTok Drama Dance",
         image: "/images/events/event-9.jpg",
@@ -59,14 +59,24 @@ const allEvents = [
 export default function CalendarPage() {
     const router = useRouter();
     const [date, setDate] = useState<Date | undefined>(new Date('2025-09-25'));
+    const [events, setEvents] = useState(allEvents);
 
-    const selectedEvents = date 
-        ? allEvents.filter(event => isSameDay(event.dateObj, date))
+    const selectedEvents = date
+        ? events.filter(event => isSameDay(event.dateObj, date))
         : [];
 
+
+    function handleDeleteEvent(id: string) {
+        setEvents(prev => prev.filter(e => e.id !== id));
+    }
+
+    function goToToday() {
+        setDate(new Date());
+    }
+
     return (
-        <div className="flex flex-col h-full bg-slate-50">
-            <header className="flex items-center justify-between p-4 bg-primary text-white flex-shrink-0">
+        <div className="relative flex flex-col h-full bg-slate-50">
+            <header className="flex items-center justify-between p-4 bg-primary text-white flex-shrink-0 z-10">
                 <div className="flex items-center gap-3">
                     <CalendarIcon className="h-6 w-6" />
                     <h1 className="text-xl font-semibold">Calendar</h1>
@@ -75,58 +85,68 @@ export default function CalendarPage() {
                     <Bell className="h-6 w-6" />
                 </Button>
             </header>
-            
+
+            {/* Gradient background, not scrollable */}
+            <div className="absolute top-[64px] left-0 w-full h-[260px] bg-gradient-to-b from-primary to-rose-200 z-0 pointer-events-none" />
+
             <main className="flex-grow flex flex-col overflow-y-auto no-scrollbar">
-                <div className="bg-gradient-to-b from-primary to-rose-200 p-4">
-                     <Card className="bg-white/90 backdrop-blur-sm rounded-xl shadow-lg">
-                        <ShadcnCalendar
-                            mode="single"
-                            selected={date}
-                            onSelect={setDate}
-                            className="rounded-lg"
-                            buttonVariant="ghost"
-                            modifiers={{
-                                hasEvent: allEvents.map(event => event.dateObj)
-                            }}
-                             classNames={{
-                                root: 'w-full flex justify-center',
-                                day_selected: 'bg-primary text-white hover:bg-primary hover:text-white focus:bg-primary focus:text-white',
-                                day_today: 'bg-primary/20 text-primary-foreground',
-                                day_hidden: 'invisible',
-                                head_cell: 'text-gray-600',
-                                nav_button: 'text-gray-700'
-                              }}
-                            components={{
-                                DayContent: ({ date, ...props }) => {
-                                    const hasEvent = allEvents.some(event => isSameDay(event.dateObj, date));
-                                    const isSelected = date && props.selected && isSameDay(date, props.selected as Date)
-                                    return (
-                                        <div className="relative w-full h-full flex items-center justify-center">
-                                            {props.children}
-                                            {hasEvent && !isSelected && <div className="absolute bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-primary"></div>}
-                                        </div>
-                                    )
-                                }
-                            }}
-                        />
+                <div className="p-4 pt-0">
+                    <Card className="bg-white/90 backdrop-blur-sm rounded-xl shadow-lg">
+                        <div className="w-full flex justify-center items-center" style={{ minHeight: '360px' }}>
+                            <ShadcnCalendar
+                                mode="single"
+                                selected={date}
+                                onSelect={setDate}
+                                className="rounded-lg w-full max-w-md"
+                                buttonVariant="ghost"
+                                modifiers={{
+                                    hasEvent: events.map(event => event.dateObj),
+                                    today: [new Date()]
+                                }}
+                                modifiersClassNames={{
+                                    hasEvent: 'relative after:content-[\" \"] after:absolute after:bottom-1 after:left-1/2 after:-translate-x-1/2 after:w-1 after:h-1 after:rounded-full after:bg-primary',
+                                    today: 'ring-2 ring-primary'
+                                }}
+                                classNames={{
+                                    root: 'w-full',
+                                    months: 'flex flex-col w-full',
+                                    month: 'w-full',
+                                    table: 'w-full',
+                                    caption: 'flex justify-center items-center mb-2 text-base font-semibold',
+                                    caption_label: 'text-lg font-bold',
+                                    head_row: 'flex w-full mb-1',
+                                    head_cell: 'text-gray-600 flex-1 text-center text-xs font-medium tracking-wide px-1',
+                                    row: 'flex w-full',
+                                    cell: 'flex-1',
+                                    day: 'w-full h-9 flex items-center justify-center',
+                                    day_selected: 'bg-primary text-white hover:bg-primary hover:text-white focus:bg-primary focus:text-white',
+                                    day_today: 'bg-primary/20 text-primary-foreground',
+                                    day_hidden: 'invisible',
+                                    nav_button: 'text-gray-700'
+                                }}
+                            />
+                        </div>
                     </Card>
                 </div>
 
                 <div className="p-4 space-y-4 flex-grow bg-slate-50">
-                     <div className="flex justify-between items-center">
+                    <div className="flex justify-between items-center gap-2">
                         <h2 className="text-lg font-semibold text-gray-800">
                             {date ? format(date, 'EEEE, dd MMMM yyyy') : '...'}
                         </h2>
-                        <Button variant="ghost" size="icon">
-                            <SlidersHorizontal className="w-5 h-5 text-muted-foreground" />
-                        </Button>
+                        <div className="flex gap-2">
+                            <Button variant="outline" size="sm" onClick={goToToday}>Today</Button>
+                            <Button variant="ghost" size="icon">
+                                <SlidersHorizontal className="w-5 h-5 text-muted-foreground" />
+                            </Button>
+                        </div>
                     </div>
 
                     {selectedEvents.length > 0 ? (
                         selectedEvents.map((item) => (
-                            <Card key={item.id} className="overflow-hidden cursor-pointer hover:shadow-md transition-shadow" onClick={() => router.push(`/events/${item.id}`)}>
-                                <CardContent className="p-4">
-                                     <div className="flex items-start gap-3">
+                            <Card key={item.id} className="overflow-hidden cursor-pointer hover:shadow-md transition-shadow group" onClick={() => router.push(`/events/${item.id}`)}>
+                                <CardContent className="p-4 flex items-center justify-between">
+                                    <div className="flex items-start gap-3">
                                         <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2"></div>
                                         <div className="flex-grow">
                                             <p className="text-sm font-semibold text-primary">{item.time}</p>
@@ -137,6 +157,9 @@ export default function CalendarPage() {
                                             </div>
                                         </div>
                                     </div>
+                                    <Button variant="destructive" size="icon" className="opacity-0 group-hover:opacity-100 transition-opacity" onClick={e => { e.stopPropagation(); handleDeleteEvent(item.id); }} title="Delete event">
+                                        ×
+                                    </Button>
                                 </CardContent>
                             </Card>
                         ))
@@ -146,6 +169,7 @@ export default function CalendarPage() {
                 </div>
             </main>
             <Navbar activePage="home" />
+
         </div>
     );
 }

@@ -7,6 +7,7 @@ import { Separator } from "@/components/ui/separator";
 import { ChevronLeft, ChevronRight, Users, ClipboardList, Search, Briefcase } from "lucide-react";
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import Navbar from '@/components/layout/Navbar';
 
 const menuItems = [
     { icon: Users, label: "Volunteer Drives", href: "/community-wall/volunteer-drives" },
@@ -26,7 +27,7 @@ export default function CommunityWallPage() {
                 </Button>
                 <h1 className="text-xl font-semibold ml-4">Community Wall</h1>
             </header>
-            
+
             <main className="flex-grow p-4 overflow-y-auto">
                 <p className="text-muted-foreground mb-6">Engage with your community, find opportunities, and share feedback.</p>
                 <Card className="p-2 rounded-2xl">
@@ -46,6 +47,9 @@ export default function CommunityWallPage() {
                     ))}
                 </Card>
             </main>
+
+            <Navbar activePage="services" />
+
         </div>
     );
 }
