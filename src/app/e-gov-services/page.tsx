@@ -5,7 +5,8 @@ import { ChevronLeft } from 'lucide-react';
 import { ArrowRight, Syringe, Briefcase, Rocket, FileText, Locate, CheckCircle } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
-
+import { Input } from '@/components/ui/input'; // Assuming you have an Input component in your ui library
+// Define interface for service card props
 interface ServiceCardProps {
   title: string;
   description: string;
@@ -14,6 +15,7 @@ interface ServiceCardProps {
   process: string;
   imageUrl: string;
 }
+
 
 const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, location, contact, process, imageUrl }) => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -53,6 +55,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, location,
               <p><strong>Contact:</strong> {contact}</p>
               <p><strong>Process:</strong></p>
               <div>
+                {/* Split process string into steps and render each step */}
                 {process.split('. Step ').map((step, index) => (
                   <p key={index}>{index === 0 ? step : `Step ${parseInt(step.split(':')[0])}: ${step.split(':')[1]}`}</p>
                 ))}
@@ -68,6 +71,14 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, location,
 
 const EGovernmentServicesPage: React.FC = () => {
   const services = [
+    // Service data
+ {
+ title: 'Local Civil Registry Services',
+ description: 'Access services related to birth, marriage, and death certificates.',
+ location: 'Local Civil Registry Office, City Hall',
+ contact: 'ccrosantarosacity@gmail.com',
+ process: 'Step 1:  Click the Learn More button to redirect to the form of Local Civil Registry Office. Step 2: State the input the type of document you need. Step 3: Provide necessary identification and information. Step 4: Pay the required fees. Step 5: Receive your document.',      imageUrl: '/images/egovservices/image copy 5.png' // Replace with actual image path
+ },
     {
       title: 'Vaccination',
       description: 'Schedule your vaccination appointments and access information.',
@@ -118,24 +129,50 @@ const EGovernmentServicesPage: React.FC = () => {
       contact: 'www.laguna-pulse-sta-rosa.com',      process: 'Step 1: click the Learn More button to Visit the Visit the COMELEC precinct finder website or visit the local COMELEC office. Step 2: Enter your required information (e.g., name, birthdate). Step 3: Your precinct details will be displayed.',
       imageUrl: '/images/egovservices/image copy 5.png', // Replace with actual image path
     },
-    {
-      title: 'Local Civil Registry Services',
-      description: 'Access services related to birth, marriage, and death certificates.',
-      location: 'Local Civil Registry Office, City Hall',
-      contact: 'ccrosantarosacity@gmail.com',
-      process: 'Step 1:  Click the Learn More button to redirect to the form of Local Civil Registry Office. Step 2: State the input the type of document you need. Step 3: Provide necessary identification and information. Step 4: Pay the required fees. Step 5: Receive your document.',      imageUrl: '/images/egovservices/image copy 5.png' // Replace with actual image path
-    },
   ];
+
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const filteredServices = services.filter(service =>
+    service.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    service.description.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
     <div className="min-h-screen bg-white py-10 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
-        <div className="flex items-center mb-8">
- <Link href="/services"><ChevronLeft className="h-6 w-6 text-gray-600 mr-4" /></Link>
- <h2 className="text-3xl font-bold text-gray-800 text-center flex-grow">E-Government Services</h2>
- </div>
+        <div className="flex items-center mb-6">
+          <Link href="/services"><ChevronLeft className="h-6 w-6 text-gray-600 mr-4" /></Link>
+          <h2 className="text-3xl font-bold text-gray-800 text-center flex-grow">E-Government Services</h2>
+        </div>
+        <div className="mb-6">
+          <Input
+            placeholder="Search services..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+        </div>
+        {/* Image section with overlay and text */}
+        <div className="relative w-full h-64 mb-6 rounded-lg overflow-hidden transition-transform duration-300 ease-in-out hover:scale-105">
+          <Image
+            src="/images/egovservices/image copy 7.png"
+            alt="E-Government Services Banner"
+            layout="fill"
+            objectFit="cover"
+          />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 100%)' }}></div>
+          <div className="absolute inset-x-0 bottom-0 p-4 text-white">
+            <p className="text-white text-center text-lg font-semibold">
+              Explore a wide range of convenient online services offered by the local government. Access information and apply for permits, certificates, and more from the comfort of your home.
+            </p>
+          </div>
+        </div>
+
+        {/* Search bar */}
+
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {services.map((service, index) => (
+          {filteredServices.map((service, index) => (
             <ServiceCard
               key={index}
               title={service.title}
