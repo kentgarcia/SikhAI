@@ -29,6 +29,9 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <meta name="theme-color" content="#A4040A" />
+        <link rel="icon" href="/images/icon_logo.png" sizes="any" />
+        <link rel="apple-touch-icon" href="/images/icon_logo.png" />
+        <link rel="manifest" href="/manifest.json" />
       </head>
       <body className={`${poppins.className} bg-muted/40`}>
         <Shell>{children}</Shell>
