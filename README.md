@@ -1,10 +1,20 @@
+![SikhAI Logo](public/images/icon_logo.png)
+
 # SikhAI
 
-Your smart, human-centered civic companion for a safer, better‑connected, opportunity‑ready community.
+**Your smart, human-centered civic companion for a safer, better‑connected, opportunity‑ready community.**
 
-## Objectives
+![Rosa AI](public/images/rosaIdle.png)
 
-- Empower residents with always-available, trusted guidance through an AI companion (Rosa) for daily living, safety, and opportunity discovery.
+![Next.js](https://img.shields.io/badge/Next.js-14-blue?logo=next.js)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.0-blue?logo=tailwindcss)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?logo=typescript)
+
+---
+
+## 🌹 Objectives
+
+- Empower residents with always-available, trusted guidance through an AI companion ![Rosa](public/images/rosaIdle.png) for daily living, safety, and opportunity discovery.
 - Strengthen civic participation by centralizing local news, events, government service awareness, and community-driven boards in one modern interface.
 - Improve access to education, skills development, and scholarships—especially for under‑served learners and job seekers.
 - Accelerate response and preparedness in health, emergency, and calamity scenarios via a unified RespondaHub toolset.
@@ -12,19 +22,25 @@ Your smart, human-centered civic companion for a safer, better‑connected, oppo
 - Foster inclusive community engagement via collaborative spaces (volunteer drives, polls, lost & found, jobs) that surface real local needs.
 - Deliver a calming, friendly, and culturally resonant UX (soft rose palette, warm tone, subtle motion) that builds trust and habitual use.
 
-## Core Features
+## ✨ Core Features
 
-### 1. Smart AI Companion – Rosa
+![Rosa Waving](public/images/rosaWave.png)
+
+### 1. Smart AI Companion – ![Rosa](public/images/rosaIdle.png)
 
 - Conversational assistant (text + voice) for FAQs, city services, safety tips, and proactive reminders.
 - Personalized prompts for events, opportunities, and wellness.
 - Contextual guidance for navigating government forms or city procedures.
+
+![Voice Assistant](public/images/rosavoice.png)
 
 ### 2. Personalized Dashboard
 
 - Greeting and quick-glance cards for news, events, weather, alerts, and announcements.
 - Dynamic prioritization (e.g., urgent safety notice elevates).
 - Modular widget architecture for future pluggable services.
+
+![Dashboard](public/images/module/image.png)
 
 ### 3. RespondaHub (Safety & Health)
 
@@ -33,6 +49,8 @@ Your smart, human-centered civic companion for a safer, better‑connected, oppo
 - Appointment booking gateway (health or civic services).
 - Calamity impact visualization map for situational awareness.
 
+![RespondaHub](public/images/module/image%20copy%202.png)
+
 ### 4. Community Wall
 
 - Volunteer drives: discover & signal participation.
@@ -40,12 +58,16 @@ Your smart, human-centered civic companion for a safer, better‑connected, oppo
 - Lost & found board to reunite people with belongings.
 - Local job board highlighting nearby openings.
 
+![Community Wall](public/images/module/image%20copy%203.png)
+
 ### 5. EduConnect (Learning & Growth)
 
 - Scholarship discovery and application guidance.
 - Skills training & vocational program listings.
 - Curated online modules for self-paced learning.
 - Resource surfacing based on user interests/goals.
+
+![EduConnect](public/images/module/image%20copy%204.png)
 
 ### 6. e‑Government Service Enablement
 
@@ -58,6 +80,8 @@ Your smart, human-centered civic companion for a safer, better‑connected, oppo
 - Aggregated, context-aware event surfacing (date proximity, relevance tags).
 - Rich event media & share-friendly summaries.
 - Seamless deep links into related community opportunities.
+
+![Events](public/images/module/image%20copy%205.png)
 
 ### 8. Inclusive UX & Design System
 
@@ -79,4 +103,8 @@ Your smart, human-centered civic companion for a safer, better‑connected, oppo
 
 ---
 
-Focused on impact: SikhAI unifies safety, learning, livelihood, and civic access—turning fragmented touchpoints into one compassionate digital companion.
+![Impact](public/images/module/image%20copy%206.png)
+
+**Focused on impact: SikhAI unifies safety, learning, livelihood, and civic access—turning fragmented touchpoints into one compassionate digital companion.**
+
+</div>
