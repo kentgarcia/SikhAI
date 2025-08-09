@@ -14,7 +14,7 @@
 
 ## 🌹 Objectives
 
-- Empower residents with always-available, trusted guidance through an AI companion ![Rosa](public/images/rosaIdle.png) for daily living, safety, and opportunity discovery.
+- Empower residents with always-available, trusted guidance through an AI companion for daily living, safety, and opportunity discovery.
 - Strengthen civic participation by centralizing local news, events, government service awareness, and community-driven boards in one modern interface.
 - Improve access to education, skills development, and scholarships—especially for under‑served learners and job seekers.
 - Accelerate response and preparedness in health, emergency, and calamity scenarios via a unified RespondaHub toolset.
@@ -24,9 +24,7 @@
 
 ## ✨ Core Features
 
-![Rosa Waving](public/images/rosaWave.png)
-
-### 1. Smart AI Companion – ![Rosa](public/images/rosaIdle.png)
+### 1. Smart AI Companion
 
 - Conversational assistant (text + voice) for FAQs, city services, safety tips, and proactive reminders.
 - Personalized prompts for events, opportunities, and wellness.
@@ -40,16 +38,12 @@
 - Dynamic prioritization (e.g., urgent safety notice elevates).
 - Modular widget architecture for future pluggable services.
 
-![Dashboard](public/images/module/image.png)
-
 ### 3. RespondaHub (Safety & Health)
 
 - Emergency hotline directory & fast-access actions.
 - Hospital / clinic locator with contextual info.
 - Appointment booking gateway (health or civic services).
 - Calamity impact visualization map for situational awareness.
-
-![RespondaHub](public/images/module/image%20copy%202.png)
 
 ### 4. Community Wall
 
@@ -58,16 +52,12 @@
 - Lost & found board to reunite people with belongings.
 - Local job board highlighting nearby openings.
 
-![Community Wall](public/images/module/image%20copy%203.png)
-
 ### 5. EduConnect (Learning & Growth)
 
 - Scholarship discovery and application guidance.
 - Skills training & vocational program listings.
 - Curated online modules for self-paced learning.
 - Resource surfacing based on user interests/goals.
-
-![EduConnect](public/images/module/image%20copy%204.png)
 
 ### 6. e‑Government Service Enablement
 
@@ -80,8 +70,6 @@
 - Aggregated, context-aware event surfacing (date proximity, relevance tags).
 - Rich event media & share-friendly summaries.
 - Seamless deep links into related community opportunities.
-
-![Events](public/images/module/image%20copy%205.png)
 
 ### 8. Inclusive UX & Design System
 
@@ -102,8 +90,6 @@
 - Clear separation of official info vs community-contributed content.
 
 ---
-
-![Impact](public/images/module/image%20copy%206.png)
 
 **Focused on impact: SikhAI unifies safety, learning, livelihood, and civic access—turning fragmented touchpoints into one compassionate digital companion.**
 
